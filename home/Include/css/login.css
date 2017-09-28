@@ -1,0 +1,209 @@
+*{
+	margin:0;
+	padding:0;
+	font-size:12px;
+}
+a{
+	text-decoration: none;
+	color:#666;
+}
+a:hover{
+	color:#E4393C;
+	text-decoration: underline;
+}
+/*********  头部  ***********/
+#header{
+	width: 1349px;
+	height: 80px;
+	margin:0 auto;
+	/*background-color:red;*/
+}
+.header_content{
+	width: 990px;
+	height: 100%;
+	margin:0 auto;
+}
+.logo_pic{
+	display: block;
+	margin-top: 10px;
+	float: left;
+}
+.welcome_pic{
+	margin-top: 20px;
+	margin-left: 20px;
+}
+.diaocha a{
+	background:url('../images/q-icon.png') no-repeat;
+	padding-left: 22px;
+	float: right;
+	position: relative;
+	bottom:10px;
+	color:#999;
+	font-family: 宋体;
+}
+/************** 主体内容 *******/
+#content{
+	width: 1349px;
+	height: 475px;
+	background:#0D0093 url('../images/login_ad_pic.jpg') no-repeat 180px 0;
+	margin:0 auto;
+}
+.login_xx{
+	width: 347px;
+	height: 410px;
+	/*float: right;*/
+	background-color: white;
+	position: relative;
+	top:40px;
+	left: 820px;
+}
+.login_title{
+	height: 34px;
+	border-bottom: 1px solid #F4F4F4;
+	padding:10px 10px;
+}
+.login_title div{
+	height: 18px;
+	float:left;
+	font-size: 18px;
+	margin-top: 10px;
+	padding:0 45px;
+	color:#666;
+	font-weight:500;
+	line-height: 18px;
+}
+.login_title div:first-child{
+	border-right: 1px solid #f4f4f4;
+}
+.login_title div:first-child:hover{
+	cursor: pointer;
+	font-weight: bold;
+	color:#E4393C;
+}
+.login_title div:last-child{
+	font-weight: bold;
+	color:#E4393C;
+	cursor: pointer;
+}
+.user_info{
+	width: 100%；
+	height: 255px;
+	border-bottom:1px solid #f4f4f4;
+}
+.user_info table{
+	margin:30px auto;
+}
+.user_info div{
+	height: 38px;
+	margin-bottom: 18px;
+}
+.user_info input{
+	font-size: 15px;
+	outline: none;
+	border:0;
+}
+input[name="username"],input[type="password"]{
+	margin-left: 10px;
+}
+.user_info .username,.user_info .password{
+	border:1px solid #BDBDBD;
+	width: 304px;
+	line-height: 38px;
+}
+.yzm{
+	border:1px solid #BDBDBD;
+	width: 180px;
+	float: left;
+	line-height: 38px;
+}
+.yzm input{
+	width: 180px;
+	text-align: center;
+}
+.yzm_pic{
+	width: 90px;
+	height: 33px;
+}
+.yzm_pic,.huan_yzm{
+	float: left;
+}
+.forget_pwd{
+	float: right;
+}
+.do_login_b{
+	width: 305px;
+	height: 34px;
+	background-color: #E4393C;
+	color:white;
+	font-size: 18px;
+	border:0;
+}
+.login_b{
+	padding-top: 15px;
+}
+.username_pic,.userpwd_pic{
+	display: block;
+	width: 38px;
+	height: 38px;
+	background: url('../images/userinfo_pic.png');
+	float: left;
+	border-right: 1px solid #bdbdbd;
+}
+.userpwd_pic{
+	background-position: -48px 0;
+}
+.login_other_left{
+	width:125px;
+	height: 23px;
+	/*background-color: red;*/
+	float: left;
+	margin-top: 10px;
+	margin-left: 20px;
+}
+.login_other_left a{
+	float: left;
+}
+.login_other_left span{
+	float: left;
+}
+.login_other_left a i{
+	width: 20px;
+	height: 20px;
+	display: block;
+	background: url('../images/QQ-weixin.png') no-repeat;
+	overflow: hidden;
+	float: left;
+}
+.login_other_right{
+	float: right;
+	margin-top: 10px;
+	margin-right: 25px;
+}
+.login_other_right a i{
+	width: 16px;
+	height: 16px;
+	display: block;
+	background: url('../images/userinfo_pic.png') no-repeat -104px -75px;
+	float: left;
+}
+.login_other_right a{
+	font-size: 15px;
+	color:#B61D1D;
+	line-height: 16px;
+}
+#footer{
+	height: 85px;
+	width: 1349px;
+	color:#666;
+	text-align: center;
+	margin:0 auto;
+}
+#footer ul li{
+	list-style: none;
+	float: left;
+	padding:0 5px;
+}
+#footer ul{
+	width: 990px;
+	margin:20px 300px;
+}

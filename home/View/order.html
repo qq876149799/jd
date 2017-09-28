@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>我的京东--我的订单</title>
+	<link rel="icon" href="./Include/images/favicon.ico" >
+	<link rel="stylesheet" href="./Include/css/order.css">
+	<link rel="stylesheet" href="./Include/css/footer1.css">
+</head>
+<body bgcolor="#F5F5F5">
+	<div id="header">
+		<div class="header_top">
+			<div class="w">
+				<span class="city">送至：山西</span>
+				<ul class="header_list">
+					<?php if ( empty($_SESSION['user']['username']) || $_SESSION['user']['login'] != 'true') {
+	echo '<li><a href="./index.php?c=user&a=login">你好，请登录</a>&nbsp;<a href="./index.php?c=user&a=reg" style="color:#F10215">免费注册</a></li>';
+}else{
+	echo !isset($_SESSION['user']['uername'])?'<li style="margin-right: 10px;"><a href="./index.php?c=user">'.$_SESSION['user']['username'].'</a><div class="myjd_menu"><a href="./index.php?c=user&a=logout">退出登录</a></div></li>':'username';
+} ?>
+					<li class="nav_fenge"></li>
+					<li class="nav_text"><a href="./index.php?c=user&a=order">我的订单</a></li>
+					<li class="nav_fenge"></li>
+					<li class="nav_text"><a href="./index.php?c=user">我的京东 ∨</a></li>
+					<li class="nav_fenge"></li>
+					<li class="nav_text"><a href=""京东会员></a></li>
+					<li class="nav_fenge"></li>
+					<li class="nav_text"><a href="">企业采购</a></li>
+					<li class="nav_fenge"></li>
+					<li class="nav_text"><a href="">手机京东 ∨</a></li>
+					<li class="nav_fenge"></li>
+					<li class="nav_text">关注京东 ∨</li>
+					<li class="nav_fenge"></li>
+					<li class="nav_text">客户服务 ∨</li>
+					<li class="nav_fenge"></li>
+					<li class="nav_text">网站导航 ∨</li>
+				</ul>
+			</div>
+		</div>
+		<div class="header_link">
+			<div class="w">
+				<a href="" class="logo"><div></div></a>
+				<div class="myjd_link">
+					<a href="./index.php?c=user">我的京东</a>
+					<a href="./index.php">返回京东首页</a>
+				</div>
+				<ul class="link_list">
+					<li><a href="./index.php">首页</a></li>
+					<li><a href="./index.php?c=user">账户设置</a></li>
+					<li><a href="">社区</a></li>
+					<li><a href="">消息</a></li>
+				</ul>
+				<div class="header_nav_right">
+					<form action="" method="">
+						<div class="header_search">
+							<input type="text" name="search_keywords">
+							<input type="submit" value="搜索">
+						</div>
+					</form>
+						<div class="mycart">
+							<i></i>
+							<span><a href="./index.php?c=cart">我的购物车</a> &gt;</span>
+						</div>
+				</div>
+				<div style="clear:both"></div>
+			</div>
+		</div>
+	</div>
+	<div id="content">
+		<div class="w">
+			<div class="left_menu">
+				<div class="left_menu_con">
+					<ul style="margin-top: 0">
+						<li><b>订单中心</b></li>
+						<li><a href="" style="color:#E4393C;font-weight: bold;">我的订单</a></li>
+						<li><a href="">我的活动</a></li>
+						<li><a href="">评价晒单</a></li>
+						<li><a href="">我的常购商品</a></li>
+						<li><a href="">购物助手</a></li>
+					</ul>
+					<ul>
+						<li><b>关注中心</b></li>
+						<li><a href="">关注的商品</a></li>
+						<li><a href="">关注的店铺</a></li>
+						<li><a href="">关注的专辑</a></li>
+						<li><a href="">关注的内容</a></li>
+						<li><a href="">关注的活动</a></li>
+						<li><a href="">浏览历史</a></li>
+					</ul>
+					<ul>
+						<li><b>资产中心</b></li>
+						<li><a href="">小金库</a></li>
+						<li><a href="">京东白条</a></li>
+						<li><a href="">小白理财</a></li>
+						<li><a href="">京东兑换卡</a></li>
+						<li><a href="">余额</a></li>
+						<li><a href="">优惠券</a></li>
+						<li><a href="">京东卡/E卡</a></li>
+						<li><a href="">京东图书卡</a></li>
+						<li><a href="">京豆</a></li>
+						<li><a href="">京东钢镚</a></li>
+					</ul>
+					<ul>
+						<li><b>特色业务</b></li>
+						<li><a href="">我的营业厅</a></li>
+						<li><a href="">京东通信</a></li>
+						<li><a href="">定期购</a></li>
+						<li><a href="">我的回收单</a></li>
+						<li><a href="">节能补贴</a></li>
+						<li><a href="">医药服务</a></li>
+						<li><a href="">流量加油站</a></li>
+						<li><a href="">黄金托管</a></li>
+						<li><a href="">视频教育订单</a></li>
+						<li><a href="">海外房产预约</a></li>
+						<li><a href="">我的全球购</a></li>
+						<li><a href="">装修服务</a></li>
+					</ul>
+					<ul>
+						<li><b>客户服务</b></li>
+						<li><a href="">返修退换货</a></li>
+						<li><a href="">价格保护</a></li>
+						<li><a href="">意见建议</a></li>
+						<li><a href="">我的问答</a></li>
+						<li><a href="">购买咨询</a></li>
+						<li><a href="">交易纠纷</a></li>
+						<li><a href="">京东维修</a></li>
+						<li><a href="">上门预约服务</a></li>
+						<li><a href="">我的发票</a></li>
+						<li><a href="">举报中心</a></li>
+					</ul>
+					<ul>
+						<li><b>设置</b></li>
+						<li><a href="">个人信息</a></li>
+						<li><a href="">收货地址</a></li>
+					</ul>
+				</div>
+				<div class="left_menu_ad">
+					<img src="./Include/images/user_left_menu_ad1.jpg">
+					<img src="./Include/images/user_left_menu_ad2.jpg">
+				</div>
+			</div>
+			<div class="right_con">
+				<div class="my_order_title"><b>我的订单</b></div>
+				<div class="my_order_list">
+					<div class="order_nav">
+						<ul>
+							<li class="order_list_front"><a href="">全部订单</a></li>
+							<li class="order_list_front"><a href="">待付款</a></li>
+							<li class="order_list_front"><a href="">待收货</a></li>
+							<li class="order_list_front"><a href="">待评价</a></li>
+							<li class="order_list_last"><a href="" style="color:#333"><b>我的常够商品</b></a></li>
+							<li class="order_list_last"><a href="" style="color:#333"><b>好货·清仓</b></a></li>
+							<li class="order_list_last"><a href="">订单回收站</a></li>
+						</ul>
+						<div class="order_search">
+							<form action="" method="">
+								<input type="text" name="order_search" placeholder="商品名称/商品编号/订单号">
+								<input type="submit" value="">
+							</form>
+						</div>
+					</div>
+					<div class="order_con">
+						<div class="order_con_nav">
+							<ul>
+								<li>近三个月订单</li>
+								<li>订单详情</li>
+								<li>收货人</li>
+								<li>金额</li>
+								<li>全部状态</li>
+								<li>操作</li>
+							</ul>
+						</div>
+						<div class="order_con_table">
+<?php if (!empty($result)) {
+foreach ($result as $key => $value) { ?>
+							<table cellspacing="0" cellpadding="0" width="1048px" style="margin-bottom: 20px;">
+								<tr>
+									<td class="order_con_thead" colspan="5">
+										<span><?php echo date('Y-m-d H:i:s',$value['addtime'])?></span>
+										<span>订单号：<a href=""><?php echo $value['oid']?></a></span>
+										<span>京东 <i></i></span>
+										<span><b></b></span>
+									</td>
+								</tr>
+
+								<tr class="order_goods_info">
+									<td>
+									<div style="margin-bottom:10px;margin-top: 10px">
+										<div class="order_goods_pic"><img src="../public/uploads/goods/<?php echo $value['pic']?>" width="60" height="60"></div>
+										<div class="order_goods_name" style="margin-left: 10px;">
+											<a href="./index.php?c=goods&a=info&id="><?php echo $value['gname']?></a>
+										</div>
+										<div class="order_goods_num">x<?php echo $value['gnum']?></div>
+										<div class="order_goods_other">
+											<a href="">申请售后</a><br>
+											<a href="">卖了换钱</a>
+										</div>
+									</div>
+									</td>
+
+									<td><?php echo $value['linkman']?><i></i></td>
+									<td>总额￥<?php echo $value['total']?><div>在线支付/白条</div></td>
+<?php switch ($value['status']) {
+	case '0':
+		$zhuangtai = '<font color="deepred">未支付</font>';
+		break;
+	case '1':
+		$zhuangtai = '<font color="blue">已支付</font>';
+		break;
+	case '2':
+		$zhuangtai = '<font color="orange">等待收货</font>';
+		break;
+	case '3':
+		$zhuangtai = '<font color="green">已收货</font>';
+		break;
+	default:
+		$zhuangtai = '<font color="gray">无效订单</font>';
+		break;
+}?>
+									<td><?php echo $zhuangtai; ?><br><div></div><span>+15</span><br><a href="./index.php?c=user&a=orderinfo&id=<?php echo $value['oid']?>">订单详情</a></td>
+<?php
+	switch ($value['status']) {
+	case '0'://等待支付
+		echo '<td><div><a href="./index.php?c=order&a=to_pay&id='.$value['oid'].'">立即支付</a></div></td>';
+		break;
+	case '1'://等待发货
+		echo '<td><div>等待发货</div></td>';
+		break;
+	case '2'://等待收货
+		echo '<td><div><a href="./index.php?c=order&a=confirm&id='.$value['oid'].'">确认收货</a></div></td>';
+		break;
+	case '3'://已收货
+		echo '<td>评价|晒单<br><div><a href="./index.php?c=goods&a=info&id='.$value['gid'].'">再次购买</a></div></td>';
+		break;
+	default:
+		echo'<font color="gray">无效订单</font>';
+		break;
+	}
+?>
+									
+								</tr>
+
+							</table>
+<?php }}else{ ?>
+	<div>暂无订单</div>
+	<?php }?>
+						</div>
+					</div>
+					<!--  -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<div style="clear:both"></div>
+	<div id="footer">
+		<div class="service_items">
+			<ul>
+				<li class="service_item_1"></li>
+				<li class="service_item_2"></li>
+				<li class="service_item_3"></li>
+				<li class="service_item_4"></li>
+			</ul>
+		</div>
+		<div class="services_list">
+			<ul>
+				<li>
+					<ul class="setvices_list_item">
+						<li>购物指南</li>
+						<li><a href="">购物流程</a></li>
+						<li><a href="">会员介绍</a></li>
+						<li><a href="">生活旅行/团购</a></li>
+						<li><a href="">常见问题</a></li>
+						<li><a href="">大家电</a></li>
+						<li><a href="">联系客服</a></li>
+					</ul>
+				</li>
+				<li>
+					<ul class="setvices_list_item">
+						<li>配送方式</li>
+						<li><a href="">上门自提</a></li>
+						<li><a href="">211限时达</a></li>
+						<li><a href="">配送服务查询</a></li>
+						<li><a href="">配送费收取标准</a></li>
+						<li><a href="">海外配送</a></li>
+					</ul>
+				</li>
+				<li>
+					<ul class="setvices_list_item">
+						<li>支付方式</li>
+						<li><a href="">货到付款</a></li>
+						<li><a href="">在线支付</a></li>
+						<li><a href="">分期付款</a></li>
+						<li><a href="">邮局汇款</a></li>
+						<li><a href="">公司转账</a></li>
+					</ul>
+				</li>
+				<li>
+					<ul class="setvices_list_item">
+						<li>售后服务</li>
+						<li><a href="">售后政策</a></li>
+						<li><a href="">价格保护</a></li>
+						<li><a href="">退款说明</a></li>
+						<li><a href="">返修/退换货</a></li>
+						<li><a href="">取消订单</a></li>
+					</ul>
+				</li>
+				<li>
+					<ul class="setvices_list_item">
+						<li>特色服务</li>
+						<li><a href="">夺宝岛</a></li>
+						<li><a href="">DIY装机</a></li>
+						<li><a href="">延保服务</a></li>
+						<li><a href="">京东E卡</a></li>
+						<li><a href="">京东通信</a></li>
+						<li><a href="">京东JD+</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div class="copyright_con">
+			<div class="links">
+				<ul>
+				<?php foreach($linklist as $v){?>
+					<li><a href="<?php echo $v['address']?>"><?php echo $v['name']?></a></li>
+					<li class="fenge">|</li>
+<?php } ?>
+					<!-- <li class="links_text"><a href="">关于我们</a></li>
+					<li class="fenge">|</li>
+					<li class="links_text"><a href="">联系我们</a></li>
+					<li class="fenge">|</li>
+					<li class="links_text"><a href="">联系客服</a></li>
+					<li class="fenge">|</li>
+					<li class="links_text"><a href="">合作招商</a></li>
+					<li class="fenge">|</li>
+					<li class="links_text"><a href="">营销中心</a></li>
+					<li class="fenge">|</li>
+					<li class="links_text"><a href="">手机京东</a></li>
+					<li class="fenge">|</li>
+					<li class="links_text"><a href="">友情链接</a></li>
+					<li class="fenge">|</li>
+					<li class="links_text"><a href="">销售联盟</a></li>
+					<li class="fenge">|</li>
+					<li class="links_text"><a href="">京东社区</a></li>
+					<li class="fenge">|</li>
+					<li class="links_text"><a href="">风险监测</a></li>
+					<li class="fenge">|</li>
+					<li class="links_text"><a href="">隐私政策</a></li>
+					<li class="fenge">|</li>
+					<li class="links_text"><a href="">京东公益</a></li>
+					<li class="fenge">|</li>
+					<li class="links_text"><a href="">English Site</a></li>
+					<li class="fenge">|</li>
+					<li class="links_text"><a href="">Media & IR</a></li> -->
+				</ul>
+			</div>
+			
+			<div>
+				<img src="./images/gongan_pic.png">
+				<a href="">京公网安备 11000002000088号</a>   |  京ICP证070359号  |  
+				<a href="">互联网药品信息服务资格证编号(京)-经营性-2014-0008</a>  |  新出发京零 字第大120007号<br>
+			</div>
+			<div>
+				互联网出版许可证编号新出网证(京)字150号  |  
+				<a href="">出版物经营许可证</a>  |  
+				<a href="">网络文化经营许可证京网文[2014]2148-348号</a>  |  违法和不良信息举报电话：4006561155<br>
+			</div>
+			<div>Copyright © 2004-2017  京东JD.com 版权所有  |  消费者维权热线：4006067733    <a href="">经营证照</a><br>
+			</div>
+			<div>
+				京东旗下网站：<a href="">京东支付</a>  |  <a href="">京东云</a><br>
+			</div>
+			<div class="links_pic">
+				<img src="./images/footer_links_pic_1.png" alt="">
+				<img src="./images/footer_links_pic_2.png" alt="">
+				<img src="./images/footer_links_pic_3.png" alt="">
+				<img src="./images/footer_links_pic_4.png" alt="">
+				<img src="./images/footer_links_pic_5.png" alt="">
+				<img src="./images/footer_links_pic_6.png" alt="">
+			</div>
+		</div>	
+	</div>
+</body>
+</html>

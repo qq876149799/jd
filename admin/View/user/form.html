@@ -1,0 +1,123 @@
+<?php
+	if ($_GET['a'] == 'add') {
+		$title = '添加用户';
+		$action = 'do_add';
+		$submit = '提交';
+	}else if($_GET['a'] == 'edit'){
+		$title = '修改信息';
+		$action = 'do_update&id='.$_GET['id'];
+		$submit = '修改';
+	}
+?>
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>表单</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="format-detection" content="telephone=no">
+
+		<link rel="stylesheet" href="./Include/plugins/layui/css/layui.css" media="all" />
+		<link rel="stylesheet" href="./Include/plugins/font-awesome/css/font-awesome.min.css">
+	</head>
+
+	<body>
+		<div style="margin: 15px;">
+			<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+				<legend><?php echo $title;?></legend>
+			</fieldset>
+
+			<form class="layui-form" action="./index.php?c=user&a=<?php echo $action; ?>" method="post">
+				<div class="layui-form-item">
+					<label class="layui-form-label">用户名</label>
+					<div class="layui-input-block">
+						<input type="text" name="username" lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input" value="<?php echo isset($result[0]['username'])?$result[0]['username']:'' ?>" style="width:300px">
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">密码</label>
+					<div class="layui-input-inline">
+						<input type="password" name="password" placeholder="请输入密码" autocomplete="off" class="layui-input" >
+					</div>
+					<div class="layui-form-mid layui-word-aux">请填写6到12位密码</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">重复密码</label>
+					<div class="layui-input-inline">
+						<input type="password" name="repassword" placeholder="请输入密码" autocomplete="off" class="layui-input">
+					</div>
+					<div class="layui-form-mid layui-word-aux">请重复填写密码</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">用户等级</label>
+					<div class="layui-input-inline">
+						<select name="level">
+<?php
+	//判断等级
+	$qxz = $pu = $admin = $sadmin = $off = '';
+	switch ($result[0]['level']) {
+		case '0':
+			$pu = 'selected';
+			break;
+		case '1':
+			$admin = 'selected';
+			break;
+		case '2':
+			$sadmin = 'selected';
+			break;
+		case '3':
+			$off = 'selected';
+			break;
+		default:
+			$qxz = 'selected';
+			break;
+	}
+?>
+							<option value="99" <?php echo $qxz?>>请选择</option>
+							<option value="0" <?php echo $pu?>>普通会员</option>
+							<option value="1" <?php echo $admin ?>>普通管理员</option>
+							<option value="2" <?php echo $sadmin ?>>超级管理员</option>
+							<option value="3" <?php echo $off ?>>禁止</option>
+						</select>
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<div class="layui-input-block">
+						<button class="layui-btn" lay-submit=""><?php echo $submit?></button>
+						<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+					</div>
+				</div>
+			</form>
+			<a href="./index.php?c=user">返回列表</a>
+		</div>
+		<script type="text/javascript" src="./Include/plugins/layui/layui.js"></script>
+		<script>
+			layui.use(['form', 'layedit', 'laydate'], function() {
+				var form = layui.form(),
+					layer = layui.layer,
+					layedit = layui.layedit,
+					laydate = layui.laydate;
+
+				//自定义验证规则
+				form.verify({
+					title: function(value) {
+						if(value.length < 5) {
+							return '标题至少得5个字符啊';
+						}
+					},
+					pass: [/(.+){6,12}$/, '密码必须6到12位'],
+					content: function(value) {
+						layedit.sync(editIndex);
+					}
+				});
+
+			});
+		</script>
+	</body>
+
+</html>

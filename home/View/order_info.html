@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>我的京东--我的订单</title>
+	<link rel="icon" href="./Include/images/favicon.ico" >
+	<link rel="stylesheet" href="./Include/css/order_info.css">
+	<link rel="stylesheet" href="./Include/css/footer1.css">
+</head>
+<body bgcolor="#f5f5f5">
+	<div id="header">
+		<div class="header_top">
+			<div class="w">
+				<span class="city">送至：山西</span>
+				<ul>
+					<?php if ( empty($_SESSION['user']['username']) || $_SESSION['user']['login'] != 'true') {
+	echo '<li><a href="./index.php?c=user&a=login">你好，请登录</a>&nbsp;<a href="./index.php?c=user&a=reg" style="color:#F10215">免费注册</a></li>';
+}else{
+	echo !isset($_SESSION['user']['uername'])?'<li><a href="./index.php?c=user">'.$_SESSION['user']['username'].'</a><div class="myjd_menu"><a href="./index.php?c=user&a=logout">退出登录</a></div></li>':'username';
+}
+?>
+					<li class="nav_fenge"></li>
+					<li class="nav_text"><a href="./index.php?c=user&a=order">我的订单</a></li>
+					<li class="nav_fenge"></li>
+					<li class="nav_text"><a href="./index.php?c=user">我的京东 ∨</a></li>
+					<li class="nav_fenge"></li>
+					<li class="nav_text"><a href=""京东会员></a></li>
+					<li class="nav_fenge"></li>
+					<li class="nav_text"><a href="">企业采购</a></li>
+					<li class="nav_fenge"></li>
+					<li class="nav_text"><a href="">手机京东 ∨</a></li>
+					<li class="nav_fenge"></li>
+					<li class="nav_text">关注京东 ∨</li>
+					<li class="nav_fenge"></li>
+					<li class="nav_text">客户服务 ∨</li>
+					<li class="nav_fenge"></li>
+					<li class="nav_text">网站导航 ∨</li>
+				</ul>
+			</div>
+		</div>
+		<div class="header_link">
+			<div class="w">
+				<a href="./index.php" class="logo"><div></div></a>
+				<div class="myjd_link">
+					<a href="./index.php?c=user">我的京东</a>
+					<a href="./index.php">返回京东首页</a>
+				</div>
+				<ul class="link_list">
+					<li><a href="./index.php">首页</a></li>
+					<li><a href="./index.ph?c=user">账户设置</a></li>
+					<li><a href="">社区</a></li>
+					<li><a href="">消息</a></li>
+				</ul>
+				<div class="header_nav_right">
+					<form action="" method="">
+						<div class="header_search">
+							<input type="text" name="search_keywords">
+							<input type="submit" value="搜索">
+						</div>
+					</form>
+						<div class="mycart">
+							<i></i>
+							<span><a href="./index.php?c=cart">我的购物车 &gt;</a></span>
+						</div>
+				</div>
+				<div style="clear:both"></div>
+			</div>
+		</div>
+		<div class="tips">
+			<div class="w">
+				<i></i><span>重要提醒：京东平台及销售商不会以任何理由，要求您点击任何网址链接进行退款操作。烦请关注京东平台 “ <a href="" style="color:#005EA7">谨防诈骗公告声明</a> ”</span>
+			</div>
+		</div>
+	</div>
+	<div id="content">
+		<div class="container w">
+			<div class="order_main w">
+				<div class="order_nav">
+					<a href="./index.php?c=user">我的京东</a>
+					<span>&nbsp;&nbsp;>&nbsp;&nbsp;</span>
+					<a href="">订单中心</a>
+					<span>&nbsp;&nbsp;>&nbsp;&nbsp;</span>
+					<b>订单：<?php echo $_GET['id']?></b>
+				</div>
+				<div class="order_state">
+					<div class="order_state_con">
+						<span>订单号：<?php echo $_GET['id']?></span><br>
+<?php
+	switch ($result[0]['status']) {
+	case '0'://等待支付
+		echo '<a href="./index.php?c=order&a=to_pay&id='.$_GET['id'].'"><h3 style="color:red">点击支付</h3></a>';
+		break;
+	case '1'://等待发货
+		echo '<h3 style="color:#71B247">等待发货</h3>';
+		break;
+	case '2'://等待收货
+		echo '<a href="./index.php?c=order&a=confirm&id='.$_GET['id'].'"><h3 style="color:#71B247">点击确认收货</h3></a>';
+		break;
+	case '3'://已收货
+		echo '<h3 style="color:#71B247">完成</h3>';
+		break;
+	default:
+		echo'<font color="gray">无效订单</font>';
+		break;
+	}
+?>
+						<div class="state_btn">
+							<a href="">查看发票详情</a>
+							<a href="">评价</a>
+						</div>
+						<div class="print_order"><i></i>打印订单</div>
+					</div>
+					<div class="order_jindu">
+						<div class="order_jindu_tips">
+							订单已经完成，感谢您在京东商城购物，欢迎您对本次交易及所购商品进行评价。
+						</div>
+						<div class="order_progress">
+							<ul>
+								<li class="order_jindu_icon">
+									<ul>
+										<li>提交订单</li>
+										<!-- <li>2017-06-16 22:17:42</li> -->
+									</ul>
+								</li>
+								<li class="order_jindu_lianjie"></li>
+								<li class="order_jindu_icon">
+									<ul>
+										<li>付款成功</li>
+										<li></li>
+									</ul>
+								</li>
+								<li class="order_jindu_lianjie"></li>
+								<li class="order_jindu_icon">
+									<ul>
+										<li>商品出库</li>
+										<!-- <li>2017-06-17 07:32:33</li> -->
+									</ul>
+								</li>
+								<li class="order_jindu_lianjie"></li>
+								<li class="order_jindu_icon">
+									<ul>
+										<li>等待收货</li>
+										<!-- <li>2017-06-17 18:36:53</li> -->
+									</ul>
+								</li>
+								<li class="order_jindu_lianjie"></li>
+								<li class="order_jindu_icon">
+									<ul>
+										<li>完成</li>
+										<!-- <li>2017-06-18 11:49:15</li> -->
+									</ul>
+								</li>
+
+							</ul>
+						</div>
+						<div class="order_state_others">
+							<i class="jingdou_icon"></i>
+							<span>京豆</span> <font color="#E8393C">+21</font>
+							<i class="chengzhangzhi_icon"></i>
+							<span>会员成长值</span><font color="#e8393c">+263</font>
+						</div>
+					</div>
+					<div style="clear:both"></div>
+					<div class="state_bottom"></div>
+				</div>
+				<div class="goods_state">
+					<div class="goods_state_l">
+						<div class="goods_p">
+							<a href=""><img src="../public/uploads/goods/<?php echo $result[0]['pic']?>" alt="" width="100" height="100"></a>
+						</div>
+						<div class="goods_kuaidi">
+							<span>送货方式：普通快递</span><br>
+							<span>承运人：京东快递</span><br>
+							<span>货运单号：59180005394</span>
+						</div>	
+					</div>
+					<div class="goods_state_r">
+						<div class="kuaidi_state">
+							<ul>
+								<span>2017-06-18/周日</span><li class="date">11:49:15【太原市】 您的订单已电子签收（已在配送员处采用无纸化方式签收本订单）。感谢您在京东购物，欢迎再次光临。参加评价还能赢取京豆哟。</li>
+								<li><span class="time">07:36:01</span>&nbsp;&nbsp;【太原市】 您的订单正在配送途中，请您准备签收（配送员：李歧业，联系电话18334917034或0351-2397815）感谢您的耐心等待。</li>
+								<span>2017-06-17/周六</span><li class="date">23:51:05【太原市】 您的订单已到达【小店站】</li>
+								<li><span class="time">18:36:53</span>&nbsp;&nbsp;【太原市】 您的订单在京东【太原分拨中心】发货完成，准备送往京东【小店站】</li>
+								<li><span class="time">18:36:23</span>&nbsp;&nbsp;【太原市】 您的订单在京东【太原分拨中心】分拣完成</li>
+								<li><span class="time">10:04:43</span>&nbsp;&nbsp;【德州市】 您的订单在京东【济南分拣中心】发货完成，准备送往京东【太原分拨中心】</li>
+								<li><span class="time">10:04:13</span>&nbsp;&nbsp;【德州市】 您的订单在京东【济南分拣中心】分拣完成</li>
+								<li><span class="time">07:32:33</span>&nbsp;&nbsp;打包成功</li>
+								<li><span class="time">07:32:33</span>&nbsp;&nbsp;扫描员已经扫描</li>
+								<li><span class="time">00:50:18</span>&nbsp;&nbsp;您的订单已经拣货完成</li>
+								<li><span class="time">00:50:18</span>&nbsp;&nbsp;您的订单已经拣货完成</li>
+								<li><span class="time">00:06:27</span>&nbsp;&nbsp;您的订单预计6月18日送达您手中</li>
+								<li><span class="time">00:06:26</span>&nbsp;&nbsp;您的订单已经进入京东11号库准备出库</li>
+								<span>2017-06-16/周五</span><li class="date">22:35:37您的订单由于送货时间未到不能出库</li>
+								<li><span class="time">22:17:42</span>&nbsp;&nbsp;您提交了订单，请等待系统确认</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="user_info">
+					<div>
+						<ul>
+							<li>收货人信息</li>
+							<li><span>收货人：</span><?php echo $result[0]['linkman']?></li>
+							<li><span>地址：</span><?php echo $order[0]['address']?></li>
+							<li><span>手机号码：</span><?php echo $order[0]['phone']?></li>
+						</ul>
+					</div>
+					<div>
+						<ul>
+							<li>配送信息</li>
+							<li><span>配送方式：</span>普通快递</li>
+							<li><span>运费：</span>￥0.00</li>
+						<?php $orderdate =date('Y-m-d',$order[0]['addtime']) ?>
+							<li><span>送货日期：</span><?php echo date('Y-m-d',strtotime($orderdate.'+1day'))?></li>
+						</ul>
+					</div>
+					<div>
+						<ul>
+							<li>付款信息</li>
+							<li><span>付款方式：</span>在线支付</li>
+							<li><span>付款时间：</span><?php echo date('Y-m-d H:i:s',$order[0]['addtime'])?></li>
+							<li><span>商品总额：</span>¥<?php echo $order[0]['total']?></li>
+							<li><span>应支付金额：</span>¥<?php echo $order[0]['total']?></li>
+							<li><span>优惠券：</span>¥0.00</li>
+							<li><span>订单优惠：</span>¥0.00</li>
+						</ul>
+					</div>
+					<div>
+						<ul>
+							<li>发票信息</li>
+							<li><span>发票类型：</span>普通发票</li>
+							<li><span>发票抬头：</span><?php echo $order[0]['linkman']?></li>
+							<li><span>发票内容：</span>明细</li>
+						</ul>
+					</div>
+				</div>
+				<div class="goods_info">
+					<div class="lianxi_service"><a href="">京东 </a><i></i></div>
+					<div class="goods_info_con">
+						<table cellpadding="0" cellspacing="0">
+							<thead>
+							<tr height="34px" bgcolor="#F9F9F9">
+								<td>商品</td>
+								<td>商品编号</td>
+								<td>京东价</td>
+								<td>商品数量</td>
+								<td>京豆</td>
+								<td>操作</td>
+							</tr>
+							</thead>
+<?php foreach ($result as $value) {?>
+							<tbody>
+							<tr>
+								<td class="goods_left">
+									<a href=""><img src="../public/uploads/goods/<?php echo $value['pic']?>" alt="" width="60"></a>
+									<div class="goods_right">
+										<a href=""><?php echo $value['gname']?></a><br>
+										<!-- <span>碳晶黑</span> -->
+									</div>
+								</td>
+								<td><?php echo $value['gid']?></td>
+								<td>¥<?php echo $value['price']?></td>
+								<td><?php echo $value['gnum']?></td>
+								<td>21</td>
+								<td>
+									<a href="">申请售后</a><br>
+									<a href="">查看评价</a> | <a href="">查看晒单</a><br>
+									<a href="./index.php?c=goods&a=info&id=<?php echo $value['gid']?>" class="now_buy">再次购买</a>
+								</td>
+							</tr>
+							</tbody>
+<?php } ?>
+						</table>
+						<div class="all_moneys">
+							<ul>
+								<li>商品总额：<div class="all_moneys_num">￥<?php echo $value['total']?></div></li>
+								<li>返　　现：<div class="all_moneys_num">-￥0.00</div></li>
+								<li>商品优惠：<div class="all_moneys_num">-￥0.00</div></li>
+								<li>运　　费：<div class="all_moneys_num">￥0.00</div></li>
+								<li>应付总额：<div class="all_moneys_num total_price">￥<?php echo $value['total']?></div></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="footer">
+		<div class="service_items">
+			<ul>
+				<li class="service_item_1"></li>
+				<li class="service_item_2"></li>
+				<li class="service_item_3"></li>
+				<li class="service_item_4"></li>
+			</ul>
+		</div>
+		<div class="services_list">
+			<ul>
+				<li>
+					<ul class="setvices_list_item">
+						<li>购物指南</li>
+						<li><a href="">购物流程</a></li>
+						<li><a href="">会员介绍</a></li>
+						<li><a href="">生活旅行/团购</a></li>
+						<li><a href="">常见问题</a></li>
+						<li><a href="">大家电</a></li>
+						<li><a href="">联系客服</a></li>
+					</ul>
+				</li>
+				<li>
+					<ul class="setvices_list_item">
+						<li>配送方式</li>
+						<li><a href="">上门自提</a></li>
+						<li><a href="">211限时达</a></li>
+						<li><a href="">配送服务查询</a></li>
+						<li><a href="">配送费收取标准</a></li>
+						<li><a href="">海外配送</a></li>
+					</ul>
+				</li>
+				<li>
+					<ul class="setvices_list_item">
+						<li>支付方式</li>
+						<li><a href="">货到付款</a></li>
+						<li><a href="">在线支付</a></li>
+						<li><a href="">分期付款</a></li>
+						<li><a href="">邮局汇款</a></li>
+						<li><a href="">公司转账</a></li>
+					</ul>
+				</li>
+				<li>
+					<ul class="setvices_list_item">
+						<li>售后服务</li>
+						<li><a href="">售后政策</a></li>
+						<li><a href="">价格保护</a></li>
+						<li><a href="">退款说明</a></li>
+						<li><a href="">返修/退换货</a></li>
+						<li><a href="">取消订单</a></li>
+					</ul>
+				</li>
+				<li>
+					<ul class="setvices_list_item">
+						<li>特色服务</li>
+						<li><a href="">夺宝岛</a></li>
+						<li><a href="">DIY装机</a></li>
+						<li><a href="">延保服务</a></li>
+						<li><a href="">京东E卡</a></li>
+						<li><a href="">京东通信</a></li>
+						<li><a href="">京东JD+</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div class="copyright_con">
+			<div class="links">
+				<ul>
+					<li class="links_text"><a href="">关于我们</a></li>
+					<li class="fenge">|</li>
+					<li class="links_text"><a href="">联系我们</a></li>
+					<li class="fenge">|</li>
+					<li class="links_text"><a href="">联系客服</a></li>
+					<li class="fenge">|</li>
+					<li class="links_text"><a href="">合作招商</a></li>
+					<li class="fenge">|</li>
+					<li class="links_text"><a href="">营销中心</a></li>
+					<li class="fenge">|</li>
+					<li class="links_text"><a href="">手机京东</a></li>
+					<li class="fenge">|</li>
+					<li class="links_text"><a href="">友情链接</a></li>
+					<li class="fenge">|</li>
+					<li class="links_text"><a href="">销售联盟</a></li>
+					<li class="fenge">|</li>
+					<li class="links_text"><a href="">京东社区</a></li>
+					<li class="fenge">|</li>
+					<li class="links_text"><a href="">风险监测</a></li>
+					<li class="fenge">|</li>
+					<li class="links_text"><a href="">隐私政策</a></li>
+					<li class="fenge">|</li>
+					<li class="links_text"><a href="">京东公益</a></li>
+					<li class="fenge">|</li>
+					<li class="links_text"><a href="">English Site</a></li>
+					<li class="fenge">|</li>
+					<li class="links_text"><a href="">Media & IR</a></li>
+				</ul>
+			</div>
+			
+			<div>
+				<img src="./images/gongan_pic.png">
+				<a href="">京公网安备 11000002000088号</a>   |  京ICP证070359号  |  
+				<a href="">互联网药品信息服务资格证编号(京)-经营性-2014-0008</a>  |  新出发京零 字第大120007号<br>
+			</div>
+			<div>
+				互联网出版许可证编号新出网证(京)字150号  |  
+				<a href="">出版物经营许可证</a>  |  
+				<a href="">网络文化经营许可证京网文[2014]2148-348号</a>  |  违法和不良信息举报电话：4006561155<br>
+			</div>
+			<div>Copyright © 2004-2017  京东JD.com 版权所有  |  消费者维权热线：4006067733    <a href="">经营证照</a><br>
+			</div>
+			<div>
+				京东旗下网站：<a href="">京东支付</a>  |  <a href="">京东云</a><br>
+			</div>
+			<div class="links_pic">
+				<img src="./images/footer_links_pic_1.png" alt="">
+				<img src="./images/footer_links_pic_2.png" alt="">
+				<img src="./images/footer_links_pic_3.png" alt="">
+				<img src="./images/footer_links_pic_4.png" alt="">
+				<img src="./images/footer_links_pic_5.png" alt="">
+				<img src="./images/footer_links_pic_6.png" alt="">
+			</div>
+		</div>	
+	</div>
+</body>
+</html>

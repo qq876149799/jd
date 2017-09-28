@@ -1,0 +1,318 @@
+<?php
+	// var_dump($_SESSION); 
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>我的购物车 - 京东商城</title>
+	<link rel="stylesheet" href="./Include/css/cart.css">
+	<link rel="stylesheet" href="./Include/css/footer.css">
+	<link rel="icon" href="./Include/images/favicon.ico" >
+</head>
+<body>
+	<div id="header">
+		<div id="header_top" class="w">
+			<div class="index"><img src="./Include/images/home.png"><a href="./index.php">京东首页</a></div>
+			<div class="position"><img src="./Include/images/position.png"><span> 山西</span></div>
+			<div class="header_top_right">
+				<ul>
+					<?php if ( empty($_SESSION['user']['username']) || $_SESSION['user']['login'] != 'true') {
+	echo '<li><a href="./index.php?c=user&a=login">你好，请登录</a>&nbsp;<a href="./index.php?c=user&a=reg" style="color:#F10215">免费注册</a></li>';
+}else{
+	echo !isset($_SESSION['user']['uername'])?'<li><a href="./index.php?c=user">'.$_SESSION['user']['username'].'</a><div class="myjd_menu"><a href="./index.php?c=user&a=logout">退出登录</a></div></li>':'username';
+}
+?>
+					<li style="color:#ccc">|</li>
+					<li><a href="./index.php?c=user&a=order">我的订单</a></li>
+					<li style="color:#ccc">|</li>
+					<li><a href="./index.php?c=user">我的京东 ∨</a></li>
+					<li style="color:#ccc">|</li>
+					<li><a href="#">京东会员</a></li>
+					<li style="color:#ccc">|</li>
+					<li><a href="#">企业采购</a></li>
+					<li style="color:#ccc">|</li>
+					<li>客户服务 ∨</li>
+					<li style="color:#ccc">|</li>
+					<li>网站导航 ∨</li>
+					<li style="color:#ccc">|</li>
+					<li><a href="">手机京东</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div id="top" class="w">
+		<a href="./index.php"><img src="./Include/images/login_logo.png"></a>
+		<a href="#"><img src="./Include/images/cart-icon.png"></a>
+		<form action="" method="">
+			<div class="search">
+				<input type="text" name="search" placeholder="自营">
+				<input type="submit" value="搜索">
+			</div>
+		</form>
+	</div>
+	<div id="content">
+		<!-- <div class="no-login w">
+			<div class="kong_con w">
+				<span>购物车内暂时没有商品，登录后将显示您之前加入的商品</span><br>
+				<a href="" class="to_login">登录</a>
+				<a href="./index.php?c=goods" class="to_list">去购物 ></a>
+			</div>
+		</div> -->
+<?php if (empty($_SESSION['cart'])) { ?>
+		<div class="login_kong w">
+			<div class="login_kong_con w">
+				<span>购物车空空的哦~，去看看心仪的商品吧~</span><br><br>
+				<a href="./index.php?c=goods" class="login_to_list">去购物 ></a>
+			</div>
+		</div>
+<?php }else{ 
+$total = 0;$allgoods = 0;
+	?>
+		<div class="cart_goods w">
+			<div class="cart_nav w">
+				<div class="cart_nav_left">
+					<a href="">全部商品</a>
+					<a href="">京东大药房</a>
+				</div>
+				<div class="cart_nav_right">
+					<span>配送至：</span>
+					<div class="address">山西太原市小店区 ∨</div>
+				</div>
+			</div>
+			<div class="cart_con_top w">
+				<table>
+					<tr>
+						<td><label><input type="checkbox" name="all_focus">全选</label></td>
+						<td>商品</td>
+						<td>单价</td>
+						<td>数量</td>
+						<td>小计</td>
+						<td>操作</td>
+					</tr>
+				</table>
+			</div>
+			<form action="./index.php?c=order&a=jiesuan" method="post">
+			<div class="cart_goods_con w">
+				<table>
+<?php foreach ($_SESSION['cart'] as $v) { 
+		$xiaoji = $v['price'] * $v['gnum'];
+		$total += $xiaoji;
+		//计算所有商品
+		$allgoods +=$v['gnum'];
+?>
+					<tr>
+						<td class="goods_info">
+							<div class="goods_pic"><input type="checkbox" name="id[]" value="<?php echo $v['id']?>"><img src="../public/uploads/goods/<?php echo $v['pic']?> ?>" width="80" height="80"></div>
+							<div class="goods_name">
+								<a href="./index.php?c=goods&a=info&id=<?php echo $v['id']?>"><?php echo $v['name']?></a><br>
+							</div>
+							<div class="goods_services">
+								<i class="wuliyou"></i><span>支持7天无理由退货</span><br>
+								<i class="yanbao"></i><span>选延保</span>
+							</div>
+						</td>
+						<td class="goods_family">
+							<span>颜色：幻夜黑</span><br>
+							<span>尺码：全网通（4GB 64GB）</span>
+						</td>
+						<td class="goods_price">
+							￥<?php echo $v['price']?>
+						</td>
+						<td class="goods_number">
+							<a href="./index.php?c=cart&a=yunsuan&id=<?php echo $v['id']?>&gnum=1">+</a> <span><?php echo $v['gnum']?></span> <a href="./index.php?c=cart&a=yunsuan&id=<?php echo $v['id']?>&gnum=-1">-</a>
+						</td>
+						<td class="goods_zong">￥<?php echo $xiaoji?></td>
+						<td class="goods_other">
+							<a href="./index.php?c=cart&a=del&id=<?php echo $v['id']?>">删除</a><br>
+							<a href="">移到我的关注</a><br>
+							<a href="">加到我的关注</a>
+						</td>
+					</tr>
+<?php } ?>
+				</table>
+			</div>
+			<div class="cart_tijiao w" >
+				<div class="cart_tijiao_left">
+					<!-- <input type="checkbox" name="all_focus">全选 -->
+					<a href="./index.php?c=cart&a=clear">清空购物车</a>
+				</div>
+				<div class="cart_tijiao_right">
+					<span>已挑选<?php echo $allgoods;?>件商品</span>
+					<div class="total">
+						<span>总价：<font>￥<?php echo $total;?></font></span><br>
+						<span>已节省：-￥0.00</span>
+					</div>
+					<input type="submit" value="去结算">
+				</div>
+			</div>
+			</form>
+		</div>
+<?php } ?>
+		<div class="cai w">
+			<div class="cai_nav w">
+				<ul>
+					<li>猜你喜欢</li>
+					<li>随手购</li>
+					<li>我的关注</li>
+					<li>最近浏览</li>
+				</ul>
+			</div>
+			<div class="cai_con w">
+				<table width="988" cellpadding="0" cellspacing="0">
+					<tr>
+						<td>
+							<div class="cai_goods_pic"><a href=""><img src="./Include/images/cai_goods_1.jpg" alt=""></a></div>
+							<div class="cai_goods_name"><a href="">乔丹男鞋跑步鞋2017年夏秋新品耐磨防滑潮减震轻便网面透气休闲鞋男旅游运动鞋 男 黑色/闪亮橘/网面 42</a></div>
+							<div class="cai_goods_price">￥149.00</div>
+							<div class="cai_join_cart"><i class="join_cart_b"></i> &nbsp;&nbsp;加入购物车</div>
+						</td>
+						<td>
+							<div class="cai_goods_pic"><a href=""><img src="./Include/images/cai_goods_2.jpg" alt=""></a></div>
+							<div class="cai_goods_name"><a href="">【京东超市】意大利进口 Balocco 百乐可 饼干 鲜奶油蜂蜜味　350g</a></div>
+							<div class="cai_goods_price">￥149.00</div>
+							<div class="cai_join_cart"><i class="join_cart_b"></i> &nbsp;&nbsp;加入购物车</div>
+						</td>
+						<td>
+							<div class="cai_goods_pic"><a href=""><img src="./Include/images/cai_goods_3.jpg" alt=""></a></div>
+							<div class="cai_goods_name"><a href="">【移动购机专享】荣耀 V9 标配版 4GB+64GB 幻夜黑 移动联通电信4G手机</a></div>
+							<div class="cai_goods_price">￥149.00</div>
+							<div class="cai_join_cart"><i class="join_cart_b"></i> &nbsp;&nbsp;加入购物车</div>
+						</td>
+						<td>
+							<div class="cai_goods_pic"><a href=""><img src="./Include/images/cai_goods_4.jpg" alt=""></a></div>
+							<div class="cai_goods_name"><a href="">【京东超市】德芙Dove巧克力分享碗装 什锦牛奶榛仁葡萄干巧克力糖果巧克力休闲零食249g</a></div>
+							<div class="cai_goods_price">￥149.00</div>
+							<div class="cai_join_cart"><i class="join_cart_b"></i> &nbsp;&nbsp;加入购物车</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+	<footer>
+		<div class="services">
+			<ul>
+				<li>品类齐全，轻松购物</li>
+				<li>多仓直发，极速配送</li>
+				<li>正品行货，精致服务</li>
+				<li>天天低价，畅选无忧</li>
+			</ul>
+		</div>
+		<div class="help_list">
+			<ul>
+				<li>
+					<ul>
+						<li>购物指南</li>
+						<li><a href="">购物流程</a></li>
+						<li><a href="">会员介绍</a></li>
+						<li><a href="">生活旅行</a></li>
+						<li><a href="">常见问题</a></li>
+						<li><a href="">大家电</a></li>
+						<li><a href="">联系客服</a></li>
+					</ul>
+				</li>
+				<li>
+					<ul>
+						<li>配送方式</li>
+						<li><a href="">上门自提</a></li>
+						<li><a href="">211限时达</a></li>
+						<li><a href="">配送服务查询</a></li>
+						<li><a href="">配送费收取标准</a></li>
+						<li><a href="">海外配送</a></li>
+					</ul>
+				</li>
+				<li>
+					<ul>
+						<li>支付方式</li>
+						<li><a href="">货到付款</a></li>
+						<li><a href="">在线支付</a></li>
+						<li><a href="">分期付款</a></li>
+						<li><a href="">邮局汇款</a></li>
+						<li><a href="">公司转账</a></li>
+					</ul>
+				</li>
+				<li>
+					<ul>
+						<li>售后服务</li>
+						<li><a href="">售后政策</a></li>
+						<li><a href="">价格保护</a></li>
+						<li><a href="">退款说明</a></li>
+						<li><a href="">返修/退换货</a></li>
+						<li><a href="">取消订单</a></li>
+					</ul>
+				</li>
+				<li>
+					<ul>
+						<li>特色服务</li>
+						<li><a href="">夺宝岛</a></li>
+						<li><a href="">DIY装机</a></li>
+						<li><a href="">延保服务</a></li>
+						<li><a href="">京东E卡</a></li>
+						<li><a href="">京东通信</a></li>
+						<li><a href="">京东JD+</a></li>
+					</ul>
+				</li>
+			</ul>
+			<div class="fugai">
+				<br><span>京东自营覆盖区县</span><br>
+				<font>京东已向全国2661个区县提供自<br>营配送服务，支持货到付款、<br>POS机刷卡和售后上门服务。</font>
+				<br><a href="">查看详情></a>
+			</div>
+		</div>
+		<div class="copy">
+			<div class="links">
+				<ul>
+				<?php foreach($linklist as $v){?>
+					<li><a href="<?php echo $v['address']?>"><?php echo $v['name']?></a></li>
+					<li class="fenge">|</li>
+<?php } ?>
+<!-- 					<li><a href="">关于我们</a></li>
+					<li class="fenge">|</li>
+					<li><a href="">联系我们</a></li>
+					<li class="fenge">|</li>
+					<li><a href="">联系客服</a></li>
+					<li class="fenge">|</li>
+					<li><a href="">合作招商</a></li>
+					<li class="fenge">|</li>
+					<li><a href="">商家帮助</a></li>
+					<li class="fenge">|</li>
+					<li><a href="">营销中心</a></li>
+					<li class="fenge">|</li>
+					<li><a href="">手机京东</a></li>
+					<li class="fenge">|</li>
+					<li><a href="">友情链接</a></li>
+					<li class="fenge">|</li>
+					<li><a href="">销售联盟</a></li>
+					<li class="fenge">|</li>
+					<li><a href="">京东社区</a></li>
+					<li class="fenge">|</li>
+					<li><a href="">风险监测</a></li>
+					<li class="fenge">|</li>
+					<li><a href="">隐私政策</a></li>
+					<li class="fenge">|</li>
+					<li><a href="">京东公益</a></li>
+					<li class="fenge">|</li>
+					<li><a href="">English Site</a></li>
+					<li class="fenge">|</li>
+					<li><a href="">Media & IR</a></li> -->
+				</ul>
+			</div>
+			<div class="copyright">
+				<span>京公网安备 11000002000088号&nbsp;&nbsp;|&nbsp;&nbsp;京ICP证070359号&nbsp;&nbsp;|&nbsp;&nbsp;互联网药品信息服务资格证编号(京)-经营性-2014-0008&nbsp;&nbsp;|&nbsp;&nbsp;新出发京零 字第大120007号</span><br>
+				<span>互联网出版许可证编号新出网证(京)字150号&nbsp;&nbsp;|&nbsp;&nbsp;出版物经营许可证&nbsp;&nbsp;|&nbsp;&nbsp;网络文化经营许可证京网文[2014]2148-348号&nbsp;&nbsp;|&nbsp;&nbsp;违法和不良信息举报电话：4006561155</span><br>
+				<span>Copyright © 2004 - 2017  京东JD.com 版权所有&nbsp;&nbsp;|&nbsp;&nbsp;消费者维权热线：4006067733经营证照</span><br>
+				<span>京东旗下网站：京东支付&nbsp;&nbsp;|&nbsp;&nbsp;京东云</span><br>
+			</div>
+			<div class="copy_pic">
+				<div class="copu_pic_1"></div>
+				<div class="copu_pic_2"></div>
+				<div class="copu_pic_3"></div>
+				<div class="copu_pic_4"></div>
+				<div class="copu_pic_5"></div>
+				<div class="copu_pic_6"></div>
+			</div>
+		</div>
+	</footer>
+</body>
+</html>

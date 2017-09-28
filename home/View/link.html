@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>申请友情链接</title>
+	<link rel="icon" href="../Include/images/favicon.ico" >
+	<style>
+		h1{
+			color:blue;
+		}
+		input[type=submit],input[type=reset]{
+			border:1px solid #666;
+			background: #ccc;
+			width: 45px;
+			height: 25px;
+		}
+	</style>
+</head>
+<body>
+<center>
+	<h1>申请友情链接</h1>
+	<form action="../index.php?c=user&a=link" method="post">
+		友情链接名字：<input type="text" name="name"><br><br>
+		友情链接地址：<input type="text" name="address" value="http://"><br><br>
+		　　　　 <input type="submit" value="申请">　　<input type="reset" value="重置">
+	</form>
+</center>
+</body>
+</html>

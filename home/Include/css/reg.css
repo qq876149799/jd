@@ -1,0 +1,186 @@
+*{
+	margin:0;
+	padding:0;
+	font-size: 12px;
+}
+a{
+	text-decoration: none;
+	color:#666;
+}
+/****** 头部 *********/
+#header{
+	width: 1349px;
+	height: 75px;
+	box-shadow: 0px 1px 15px #ccc;
+	background-color: white;
+	padding-top: 25px;
+	margin:0 auto;
+}
+.logo{
+	width: 160px;
+	height: 50px;
+	margin-left: 75px;
+	background:url('../images/reg_icon.png') no-repeat ;
+	float: left;
+}
+.header_content>span{
+	font-size: 24px;
+	margin-left:25px;
+	line-height: 50px;
+}
+.to_login{
+	margin-top: -20px;
+	margin-right: 80px;
+}
+.to_login span{
+	color:#999;
+}
+.to_login a{
+	color:black;
+}
+.to_login a:hover{
+	text-decoration: underline;
+}
+.to_login span,.to_login a{
+	float: right;
+	font-size: 16px;
+
+}
+/*********** 主题内容 **********/
+#content{
+	width: 1349px;
+	margin:0 auto;
+}
+.container{
+	width: 1210px;
+	height: 680px;
+	margin:0 auto;
+	margin-top: 50px;
+	/*background: red;*/
+	border-bottom: 1px solid #E6E6E6;
+}
+.content_left{
+	width: 400px;
+	margin-left: 190px;
+	float: left;
+}
+.reg_item{
+	width: 398px;
+	height: 52px;
+	border:1px solid #e6e6e6;
+	margin-bottom: 30px;
+	/*padding:16px 20px;*/
+}
+.reg_item span{
+	display: block;
+	color:#666;
+	font-size: 14px;
+	margin:16px 20px;
+	float: left;
+}
+.reg_item input{
+	float: left;
+	font-size: 14px;
+	border:0;
+	outline: none;
+	margin-left: 30px;
+	width: 254px;
+	line-height: 50px;
+}
+.yzm{
+	position: relative;
+}
+.yzm img{
+	position: absolute;
+	left:285px;
+	top:3px;
+	width: 110px;
+	height: 46px;
+}
+.xieyi a{
+	color:#3388FF;
+}
+.xieyi a:hover{
+	text-decoration: underline;
+}
+.do_reg{
+	margin-top: 30px;
+}
+.do_reg>input{
+	color:white;
+	width: 400px;
+	height: 52px;
+	background-color: #EE2222;
+	border:0;
+	cursor: pointer;
+	font-size: 16px;
+}
+.content_middle{
+	border-right: 1px solid #E6E6E6;
+	height: 605px;
+	width: 100px;
+	float: left;
+}
+.content_right{
+	width: 160px;
+	height: 605px;
+	float: left;
+	margin-left: 120px;
+}
+.content_right>div{
+	width: 160px;
+	height: 61px;
+}
+.qiyeuser{
+	border-bottom:1px solid #ddd;
+}
+.qiye_pic,.guoji_pic{
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	background: url('../images/reg_icon.png') no-repeat;
+}
+.qiye_pic{
+	background-position: 0 -50px;
+}
+.guoji_pic{
+	margin-top: 30px;
+	background-position: -50px -50px;
+}
+.content_right>div>a>span{
+	font-size: 14px;
+	position: relative;
+	top:-10px;
+	left: 10px;
+}
+.content_right div a:hover{
+	font-weight: bold;
+	color:black;
+}
+/******* 脚部 *******/
+#footer{
+	height: 85px;
+	width: 1349px;
+	color:#666;
+	text-align: center;
+}
+#footer ul li{
+	list-style: none;
+	float: left;
+	padding:0 5px;
+}
+#footer ul{
+	width: 990px;
+	margin:20px 300px;
+}
+.ad{
+	width: 33px;
+	height: 135px;
+	background: url('../images/reg_icon.png') no-repeat -367px 0;
+	position: fixed;
+	bottom: 50%;
+	right: 0;
+}
+.ad:hover{
+	background-position: -334px 0;
+}

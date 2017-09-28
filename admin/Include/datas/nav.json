@@ -1,0 +1,54 @@
+[
+	{
+		"title": "基本元素",
+		"icon": "fa-cubes",
+		"spread": true,
+		"children": [
+			{
+				"title": "按钮",
+				"icon": "&#xe641;",
+				"href": "./View/button.html"
+			}, {
+				"title": "表单",
+				"icon": "&#xe63c;",
+				"href": "./View/form.html"
+			}, {
+				"title": "表格",
+				"icon": "&#xe63c;",
+				"href": "./View/table.html"
+			}, {
+				"title": "导航",
+				"icon": "&#xe609;",
+				"href": "./View/nav.html"
+			}, {
+				"title": "Tab选项卡",
+				"icon": "&#xe62a;",
+				"href": "./View/tab.html"
+			}, {
+				"title": "辅助性元素",
+				"icon": "&#xe60c;",
+				"href": "./View/auxiliar.html"
+			}
+		]
+	}, {
+		"title": "组件",
+		"icon": "fa-cogs",
+		"spread": false,
+		"children": [
+			{
+				"title": "Datatable",
+				"icon": "fa-table",
+				"href": "./View/begtable.html"
+			}, {
+				"title": "Navbar组件",
+				"icon": "fa-navicon",
+				"href": "./View/navbar.html"
+			}
+		]
+	}, {
+		"title": "这是一级导航",
+		"icon": "fa-stop-circle",
+		"href": "https://www.baidu.com",
+		"spread": false
+	}
+]

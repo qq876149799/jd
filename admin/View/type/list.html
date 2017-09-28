@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Table</title>
+		<link rel="stylesheet" href="./Include/plugins/layui/css/layui.css" media="all" />
+		<link rel="stylesheet" href="./Include/css/global.css" media="all">
+		<link rel="stylesheet" href="./Include/plugins/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="./Include/css/table.css" />
+	</head>
+
+	<body>
+		<div class="admin-main">
+			<blockquote class="layui-elem-quote">
+				<a href="./index.php?c=type&a=add" class="layui-btn layui-btn-small" id="add">
+					<i class="layui-icon">&#xe608;</i> 添加分类
+				</a>
+				<a href="#" class="layui-btn layui-btn-small layui-btn-disabled" id="import">
+					<i class="layui-icon">&#xe608;</i> 导入信息
+				</a>
+				<a href="#" class="layui-btn layui-btn-small layui-btn-disabled">
+					<i class="fa fa-shopping-cart" aria-hidden="true"></i> 导出信息
+				</a>
+			</blockquote>
+			<fieldset class="layui-elem-field">
+				<legend>所有分类</legend>
+				<div class="layui-field-box">
+					<table class="site-table table-hover">
+						<thead>
+							<tr>
+								<th>选择</th>
+								<th>编号</th>
+								<th>分类名称</th>
+								<th>父ID</th>
+								<th>路径</th>
+								<th>是否前台显示</th>
+								<th>操作</th>
+							</tr>
+						</thead>
+						<tbody>
+<?php 
+if(isset($result) && is_array($result)){
+foreach($result as $key => $value){ ?>
+							<tr>
+								<td><input type="checkbox" value="<?php echo $value['id'] ?>"></td>
+								<td><?php echo $value['id'] ?></td>
+<?php
+	$num = count(explode(',',$value['path']));
+	$qianzhui = str_repeat("- - ",($num-1)*1);
+?>
+								<td style="text-align: left;"><?php echo $qianzhui.'>'.$value['name'] ?></td>
+								<td><?php echo $value['pid']?></td>
+								<td><?php echo $value['path']?></td>
+								<td>
+<?php
+	if ($value['display'] == 1) {
+		echo '<a href="./index.php?c=type&a=display&id='.$value['id'].'&display=0">显示</a>';
+	}else if($value['display'] == 0){
+		echo '<a href="./index.php?c=type&a=display&id='.$value['id'].'&display=1">不显示</a>';
+	}
+?>
+								</td>
+								<td>
+									<a href="./index.php?c=type&a=add&pid=<?php echo $value['id']?>" class="layui-btn layui-btn-mini layui-btn-normal">添加子分类</a>
+									<a href="./index.php?c=type&a=edit&id=<?php echo $value['id']?>" class="layui-btn layui-btn-mini">编辑</a>
+									<a href="./index.php?c=type&a=del&id=<?php echo $value['id']?>" data-id="1" data-opt="del" class="layui-btn layui-btn-danger layui-btn-mini">删除</a>
+								</td>
+							</tr>
+<?php }}else{echo '暂无数据';} ?>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</fieldset>
+			<div class="admin-table-page">
+				<div id="page" class="page">
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="plugins/layui/layui.js"></script>
+		<script>
+			layui.config({
+				base: 'plugins/layui/modules/'
+			});
+
+			layui.use(['icheck', 'laypage','layer'], function() {
+				var $ = layui.jquery,
+					laypage = layui.laypage,
+					layer = parent.layer === undefined ? layui.layer : parent.layer;
+				$('input').iCheck({
+					checkboxClass: 'icheckbox_flat-green'
+				});
+
+				//page
+				laypage({
+					cont: 'page',
+					pages: 25 //总页数
+						,
+					groups: 5 //连续显示分页数
+						,
+					jump: function(obj, first) {
+						//得到了当前页，用于向服务端请求对应数据
+						var curr = obj.curr;
+						if(!first) {
+							//layer.msg('第 '+ obj.curr +' 页');
+						}
+					}
+				});
+
+				$('#search').on('click', function() {
+					parent.layer.alert('你点击了搜索按钮')
+				});
+
+				$('#add').on('click', function() {
+					$.get('temp/edit-form.html', null, function(form) {
+						layer.open({
+							type: 1,
+							title: '添加表单',
+							content: form,
+							btn: ['保存', '取消'],
+							area: ['600px', '400px'],
+							maxmin: true,
+							yes: function(index) {
+								console.log(index);
+							},
+							full: function(elem) {
+								var win = window.top === window.self ? window : parent.window;
+								$(win).on('resize', function() {
+									var $this = $(this);
+									elem.width($this.width()).height($this.height()).css({
+										top: 0,
+										left: 0
+									});
+									elem.children('div.layui-layer-content').height($this.height() - 95);
+								});
+							}
+						});
+					});
+				});
+
+				$('#import').on('click', function() {
+					var that = this;
+					var index = layer.tips('只想提示地精准些', that,{tips: [1, 'white']});
+					$('#layui-layer'+index).children('div.layui-layer-content').css('color','#000000');
+				});
+
+				$('.site-table tbody tr').on('click', function(event) {
+					var $this = $(this);
+					var $input = $this.children('td').eq(0).find('input');
+					$input.on('ifChecked', function(e) {
+						$this.css('background-color', '#EEEEEE');
+					});
+					$input.on('ifUnchecked', function(e) {
+						$this.removeAttr('style');
+					});
+					$input.iCheck('toggle');
+				}).find('input').each(function() {
+					var $this = $(this);
+					$this.on('ifChecked', function(e) {
+						$this.parents('tr').css('background-color', '#EEEEEE');
+					});
+					$this.on('ifUnchecked', function(e) {
+						$this.parents('tr').removeAttr('style');
+					});
+				});
+				$('#selected-all').on('ifChanged', function(event) {
+					var $input = $('.site-table tbody tr td').find('input');
+					$input.iCheck(event.currentTarget.checked ? 'check' : 'uncheck');
+				});
+			});
+		</script>
+	</body>
+
+</html>

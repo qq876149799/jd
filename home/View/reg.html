@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>个人注册</title>
+	<link rel="stylesheet" href="./Include/css/reg.css">
+	<link rel="icon" href="./Include/images/favicon.ico" >
+</head>
+<body>
+	<div id="header">
+		<div class="header_content">
+			<a href="./index.php"><div class="logo"></div></a>
+			<span>欢迎注册</span>
+			<div class="to_login">
+				<a href="./index.php?c=user&a=login">请登录</a>
+				<span>已有帐号？</span>
+			</div>
+		</div>
+	</div>
+	<div id="content">
+		<div class="container">
+			<div class="content_left">
+				<form action="./index.php?c=user&a=do_reg" method="post">
+				<!-- <input type="hidden" name="referer" value="./index.php?c=index"> -->
+					<div class="reg_item">
+						<span>用　户　名</span>
+						<input type="text" name="username" placeholder="您的帐户名和登录名" required oninvalid="setCustomValidity('请填写用户名')" oninput="setCustomValidity('')">
+					</div>
+					<div class="reg_item">
+						<span>设 置 密 码</span>
+						<input type="password" name="password" id="NewStaffPwd1" placeholder="建议至少使用两种字符组合" required oninvalid="setCustomValidity('请填写密码')" oninput="setCustomValidity('')">
+					</div>
+					<div class="reg_item">
+						<span>确 认 密 码</span>
+						<input type="password" name="repassword" id="NewStaffPwd2" placeholder="请再次输入密码" required oninvalid="setCustomValidity('请再次填写密码')" oninput="setCustomValidity('')">
+					</div>
+					<div class="reg_item">
+						<span>中国&nbsp;&nbsp;0086</span>
+						<input type="text" name="phone" placeholder="建议使用常用手机">
+					</div>
+					<div class="reg_item yzm">
+						<span>验　证　码</span>
+						<input type="text" name="yz_code" placeholder="请输入验证码" maxlength="4">
+						<img src="./Include/images/yz_code.jpg">
+					</div>
+					<div class="reg_item">
+						<span>手机验证码</span>
+						<input type="text" name="phone_code" placeholder="请输入手机验证码">
+					</div>
+					<div class="xieyi">
+						<label><input type="checkbox" name="xieyi" checked>
+						<span>阅读并同意<a href="">《京东用户注册协议》</a> <a href="">《隐私政策》</a></span></label>
+					</div>
+					<div class="do_reg"><input type="submit" value="立即注册" id="btnSave" ></div>
+				</form>
+			</div>
+			<div class="content_middle"></div>
+			<div class="content_right">
+				<div class="qiyeuser">
+					<a href="">
+						<div class="qiye_pic"></div>
+						<span>企业用户注册</span>
+					</a>
+				</div>
+				<div class="guoji">
+					<a href="">
+						<div class="guoji_pic"></div>
+						<span>INTERNATIONAL<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CUSTOMERS</span>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="footer">
+		<ul>
+			<li class="links"><a href="">关于我们</a></li>
+			<li class="fenge">|</li>
+			<li class="links"><a href="">联系我们</a></li>
+			<li class="fenge">|</li>
+			<li class="links"><a href="">人才招聘</a></li>
+			<li class="fenge">|</li>
+			<li class="links"><a href="">商家入驻</a></li>
+			<li class="fenge">|</li>
+			<li class="links"><a href="">广告服务</a></li>
+			<li class="fenge">|</li>
+			<li class="links"><a href="">手机京东</a></li>
+			<li class="fenge">|</li>
+			<li class="links"><a href="">友情链接</a></li>
+			<li class="fenge">|</li>
+			<li class="links"><a href="">销售联盟</a></li>
+			<li class="fenge">|</li>
+			<li class="links"><a href="">京东社区</a></li>
+			<li class="fenge">|</li>
+			<li class="links"><a href="">京东公益</a></li>
+			<li class="fenge">|</li>
+			<li class="links"><a href="">English Site</a></li>
+		</ul><br><br>
+		<span>Copyright © 2004-2017  京东JD.com 版权所有</span>
+	</div>
+	<a href="">
+		<div class="ad"></div>
+	</a>
+</body>
+</html>

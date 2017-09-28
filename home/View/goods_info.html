@@ -1,0 +1,450 @@
+<?php
+	
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>商品详情</title>
+	<link rel="icon" href="./Include/images/favicon.ico" >
+	<link rel="stylesheet" href="./Include/css/header.css">
+	<link rel="stylesheet" href="./Include/css/footer1.css">
+	<link rel="stylesheet" href="./Include/css/goods_info.css">
+</head>
+<body>
+	<div id="body_right_menu">
+		<div class="menu_content">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+	<div id="header">
+		<div class="header_top">
+			<div class="w header_nav">
+				<span class="address">送至：山西</span>
+				<ul>
+				<?php
+					if (empty($_SESSION['user']['username']) || $_SESSION['user']['login'] != 'true') {
+						echo '<li class="header_top_text"><a href="./index.php?c=user&a=login" style="color:#C81623">请登录</a>&nbsp;&nbsp;<a href="">免费注册</a></li>';
+					}else{
+						echo !isset($_SESSION['user']['uername'])?'<li><a href="./index.php?c=user">'.$_SESSION['user']['username'].'</a><div class="myjd_menu"><a href="./index.php?c=user&a=logout">退出登录</a></div></li>':'username';
+					}
+					
+				?>
+					<li class="fenge">|</li>
+					<li class="header_top_text"><a href="./index.php?c=user&a=order">我的订单</a></li>
+					<li class="fenge">|</li>
+					<li class="header_top_text"><a href="./index.php?c=user">我的京东 ∨</a></li>
+					<li class="fenge">|</li>
+					<li class="header_top_text"><a href="">京东会员</a></li>
+					<li class="fenge">|</li>
+					<li class="header_top_text"><a href="">企业采购</a></li>
+					<li class="fenge">|</li>
+					<li class="header_top_text"><a href="">手机京东 ∨</a></li>
+					<li class="fenge">|</li>
+					<li class="header_top_text"><a href="">关注京东 ∨</a></li>
+					<li class="fenge">|</li>
+					<li class="header_top_text"><a href="">客户服务 ∨</a></li>
+					<li class="fenge">|</li>
+					<li class="header_top_text"><a href="">网站导航 ∨</a></li>
+					<li style="clear:both"></li>
+				</ul>
+			</div>
+		</div>
+		<div class="header_con w">
+			<a href="./index.php"><div class="logo"></div></a>
+			<div class="search">
+				<form action="" method="get">
+					<div class="search_box">
+						<input type="text" name="search_keywords">
+						<input type="submit" value="搜索">
+					</div>
+				</form>
+				<span>
+					<a href="">低至5折</a>&nbsp;
+					<a href="">智能空调</a>&nbsp;
+					<a href="">中央空调</a>&nbsp;
+					<a href="">圆柱空调</a>&nbsp;
+					<a href="">原著空调</a>&nbsp;
+				</span>
+				<div class="myCart">
+					<p></p>
+					<a href="./index.php?c=cart">我的购物车&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>></span></a>
+				</div>
+			</div>
+		</div>
+		<nav class="w">
+			<li><a href="./index.php&c=goods">全部商品<div class="xia_icon"></div></a></li>
+			<li><a href="./index.php">首页</a></li>
+			<li><a href="">服装城</a></li>
+			<li><a href="">美妆馆</a></li>
+			<li><a href="">京东超市</a></li>
+			<li><a href="">生鲜</a></li>
+			<li><a href="">全球购</a></li>
+			<li><a href="">闪购</a></li>
+			<li><a href="">拍卖</a></li>
+			<li><a href="">金融</a></li>
+			<li style="clear:both"></li>
+		</nav>
+	</div>
+	<div id="content">
+		<div class="goods_header">
+			<div class="w">
+				<div class="page_referer">
+					<a href="" class="link">手机</a>
+					<a>></a>
+					<a href="" class="link">手机通讯</a>
+					<a>></a>
+					<a href="" class="link">手机</a>
+					<a>></a>
+					<a href="" class="link">华为（HUAWEI）</a>
+					<a>></a>
+					<span>　华为荣耀V9</span>
+				</div>
+				<div class="contact_shop">
+					<a href="" class="link"><?php echo $goodsinfo[0]['company'] ?></a>
+					<a href=""></a>
+					<a href="" class="link">联系供应商</a>
+					<a href=""></a>
+					<a href="" class="link">JIMI</a>
+					<a href=""></a>
+					<a href="" class="link">关注店铺</a>
+				</div>
+			</div>
+		</div>
+		<div class="w">
+			<div class="goods_box">
+				<div class="goods_pic_box">
+					<div class="goods_pic"><img src="../public/uploads/goods/<?php echo $goodsinfo[0]['pic'] ?>" width="450" height="450"></div>
+					<div class="goods_small_pic">
+						<img src="./Include/images/disabled-prev.png" class="small_pic_move">
+						<img src="../public/uploads/goods/<?php echo $goodsinfo[0]['pic'] ?>" class="small_pic">
+						<img src="../public/uploads/goods/<?php echo $goodsinfo[0]['pic'] ?>" class="small_pic">
+						<img src="../public/uploads/goods/<?php echo $goodsinfo[0]['pic'] ?>" class="small_pic">
+						<img src="../public/uploads/goods/<?php echo $goodsinfo[0]['pic'] ?>" class="small_pic">
+						<img src="../public/uploads/goods/<?php echo $goodsinfo[0]['pic'] ?>" class="small_pic">
+						<img src="./Include/images/disabled-next.png" class="small_pic_move">
+						<div style="clear: both"></div>
+					</div>
+					<div class="goods_btns">
+						<div class="left_btn">
+							<a href="" class="guanzhu_b"><i></i> 关注</a>
+							<a href="" class="fenxiang_b"><i></i> 分享</a>
+							<a href="" class="duibi_b"><i></i> 对比</a>
+						</div>
+						<div class="right_btn"><a href="">举报</a></div>
+					</div>
+				</div>
+				<div class="goods_info_box">
+					<div class="goods_name" title="<?php echo $goodsinfo[0]['name'] ?>"><?php echo $goodsinfo[0]['name'] ?></div>
+					<div class="goods_news">纤薄机身，2K屏，双镜头，强劲芯片，你想要的快~</div>
+					<div class="goods_price_box">
+						<div class="goods_price">
+							<span>京 东 价</span><span class="price">￥<?php echo $goodsinfo[0]['price']?></span><a href="">降价通知</a>
+						</div>
+						<div class="goods_pingjia_num">
+							累计销量<br>
+							<a href=""><?php echo $goodsinfo[0]['sales']?></a>
+						</div>
+						<div class="goods_cuxiao">
+							<span>促　　销</span><span>购买1-10件时享受优惠，超出数量以结算价为准</span>
+						</div>
+					</div>
+					<div class="product-other">
+						<div class="zhichi">支 　 持
+							<div class="yijiuhuanxin bor">
+								<div class="huan-pos huan-icon"></div>以旧换新，闲置手机回收
+							</div>
+							<div class="taocan bor">
+								<div class="g4-pos huan-icon"></div>4G套餐18元起
+							</div>
+							<div class="lipin bor">
+								<div class="lipin-pos huan-icon"></div>礼品购
+							</div>
+						</div>
+						<div class="peisong">配 送 至　山西太原小店区城区　　支持 
+							<span class="fuwu">
+								<ul>
+									<li><a href="">99元免基础运费（10kg以内）　</a></li>
+									<li><a href="">　货到付款　</a></li>
+									<li><a href="">　次日达　</a></li>
+								</ul>
+							</span><br>
+							<span>由 京东 发货，并提供售后服务。16:00前完成下单,预计明天送达</span>
+						</div>	
+						<div class="zhongliang">
+							<span style="margin-bottom:10px">重 　 量　0.473kg</span>
+						</div>
+						<div class="buy_btns">
+							<form action="" method="">
+								<!-- <div class="buy_num">
+									<div class="input">
+										<input type="text" name="buy_num" value="1">
+									</div>
+									<div class="num_choose">
+										<a href="">+</a>
+										<a href="">-</a>
+									</div>
+								</div> -->
+
+								<div class="to_buy">
+									<a href="./index.php?c=cart&a=add&id=<?php echo $_GET['id']?>">加入购物车</a>
+								</div>
+							</form>
+						</div>
+						<div class="goods_tips">
+							<div><span>本地活动</span>· <a href="">送芒果会员享5G流量 >></a></div>
+							<div><span>温馨提示</span>· <i>支持7天无理由退货</i></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div style="clear: both"></div>
+		<div class="w">
+			<div class="goods_peijian">
+				<div class="peijian_title">
+					<ul>
+						<li><a href="">人气配件</a></li>
+						<li><a href="">手机贴膜</a></li>
+						<li><a href="">手机壳</a></li>
+						<li><a href="">移动电源</a></li>
+						<li><a href="">数据线</a></li>
+						<li><a href="">充电器</a></li>
+						<li><a href="">更多</a></li>
+					</ul>
+				</div>
+				<div class="peijian-con">
+					<div class="zhuji">
+						<img src="../public/uploads/goods/<?php echo $goodsinfo[0]['pic'] ?>" alt="" width="100" height="100" style="position: relative;left:20px"><br>
+						<a href="">荣耀 V9 全网通 标配版 4GB+64GB 极光蓝 移动</a>
+					</div>
+					<div class="plus_icon"></div>
+					<div class="all-peijian">
+						<div class="peijian-1">
+							<img src="./Include/images/599bfc9eNb6f86cff.jpg" alt=""><br>
+							<a href="">【两片装】YOMO 华为荣耀V9钢化膜 手机贴膜 保</a><br>
+							<label><input type="checkbox" name="" id=""><span>￥19.90</span></label>
+						</div>
+						<div class="peijian-1">
+							<img src="./Include/images/599bfc9eNb6f86cff.jpg" alt=""><br>
+							<a href="">【两片装】YOMO 华为荣耀V9钢化膜 手机贴膜 保</a><br>
+							<label><input type="checkbox" name="" id=""><span>￥19.90</span></label>
+						</div>
+						<div class="peijian-1">
+							<img src="./Include/images/599bfc9eNb6f86cff.jpg" alt=""><br>
+							<a href="">【两片装】YOMO 华为荣耀V9钢化膜 手机贴膜 保</a><br>
+							<label><input type="checkbox" name="" id=""><span>￥19.90</span></label>
+						</div>
+						<div class="peijian-1">
+							<img src="./Include/images/599bfc9eNb6f86cff.jpg" alt=""><br>
+							<a href="">【两片装】YOMO 华为荣耀V9钢化膜 手机贴膜 保</a><br>
+							<label><input type="checkbox" name="" id=""><span>￥19.90</span></label>
+						</div>
+						<div class="peijian-1">
+							<img src="./Include/images/599bfc9eNb6f86cff.jpg" alt=""><br>
+							<a href="">【两片装】YOMO 华为荣耀V9钢化膜 手机贴膜 保</a><br>
+							<label><input type="checkbox" name="" id=""><span>￥19.90</span></label>
+						</div>
+						<div class="dengyu"></div>
+					</div>
+					<div class="yixuanze">已选择0个配件<br>
+						组合价 <span>￥2599.00</span> <br>
+						<button class="buy-now">立即购买</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div style="clear: both"></div>
+		<div class="w">
+			<div class="bttom_left_box">
+				<div class="dianpu">
+					<div class="dianpu_title"><a href=""><b><?php echo $goodsinfo[0]['company']?></b><i></i></a></div>
+					<a href="" id="fangzi"><p></p>进店逛逛</a>
+					<a href="" id="wujiaoxing"><p></p>关注店铺</a>
+				</div>
+				<div class="keneng">
+					<div class="keneng_title"><b>关于手机，你可能在找</b></div>
+					<ul>
+						<li><a href="">安卓（Android）</a></li>
+						<li><a href="">5.6英寸及以上</a></li>
+						<li><a href="">指纹识别</a></li>
+						<li><a href="">2K屏</a></li>
+						<li><a href="">双卡双待</a></li>
+						<li><a href="">支持NFC</a></li>
+						<li><a href="">快速充电</a></li>
+						<li><a href="">4GB</a></li>
+						<li><a href="">联通4G</a></li>
+						<li><a href="">电信4G</a></li>
+						<li><a href="">移动4G/联通4G/电信4G</a></li>
+						<li><a href="">移动4G</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="goods_description">
+				<div class=description_nav>
+					<ul>
+						<li><a href="">商品介绍</a></li>
+						<li><a href="">规则与包装</a></li>
+						<li><a href="">售后保障</a></li>
+						<li><a href="">商品评价</a></li>
+						<li><a href="">手机社区</a></li>
+					</ul>
+					<a href="" class="join_cart_btn">加入购物车</a>
+				</div>
+				<div class="description_con">
+					<div class="description_text">
+					<?php echo $goodsinfo[0]['description'] ?>
+				</div>
+					<div class="description_pic">
+						<img src="./images/honorpic/590c5853N3b79e204.jpg" alt="">
+						<img src="./images/honorpic/590c5853Nc3b10ad3.jpg" alt="">
+						<img src="./images/honorpic/590c5854N28bcae21.jpg" alt="">
+						<img src="./images/honorpic/590c5855N241e4975.jpg" alt="">
+						<img src="./images/honorpic/590c5855Nc189096d.jpg" alt="">
+						<img src="./images/honorpic/590c5855Ndd8877e7.jpg" alt="">
+						<img src="./images/honorpic/590c5856N6b0f5491.jpg" alt="">
+						<img src="./images/honorpic/590c5856N73e25a1d.jpg" alt="">
+						<img src="./images/honorpic/590c5856N189f6878.jpg" alt="">
+						<img src="./images/honorpic/590c5856Nd3285457.jpg" alt="">
+						<img src="./images/honorpic/594c9798N645ae794.jpg" alt="">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div style="clear:both"></div>
+	<div id="footer">
+		<div class="service_items">
+			<ul>
+				<li class="service_item_1"></li>
+				<li class="service_item_2"></li>
+				<li class="service_item_3"></li>
+				<li class="service_item_4"></li>
+			</ul>
+		</div>
+		<div class="services_list">
+			<ul>
+				<li>
+					<ul class="setvices_list_item">
+						<li>购物指南</li>
+						<li><a href="">购物流程</a></li>
+						<li><a href="">会员介绍</a></li>
+						<li><a href="">生活旅行/团购</a></li>
+						<li><a href="">常见问题</a></li>
+						<li><a href="">大家电</a></li>
+						<li><a href="">联系客服</a></li>
+					</ul>
+				</li>
+				<li>
+					<ul class="setvices_list_item">
+						<li>配送方式</li>
+						<li><a href="">上门自提</a></li>
+						<li><a href="">211限时达</a></li>
+						<li><a href="">配送服务查询</a></li>
+						<li><a href="">配送费收取标准</a></li>
+						<li><a href="">海外配送</a></li>
+					</ul>
+				</li>
+				<li>
+					<ul class="setvices_list_item">
+						<li>支付方式</li>
+						<li><a href="">货到付款</a></li>
+						<li><a href="">在线支付</a></li>
+						<li><a href="">分期付款</a></li>
+						<li><a href="">邮局汇款</a></li>
+						<li><a href="">公司转账</a></li>
+					</ul>
+				</li>
+				<li>
+					<ul class="setvices_list_item">
+						<li>售后服务</li>
+						<li><a href="">售后政策</a></li>
+						<li><a href="">价格保护</a></li>
+						<li><a href="">退款说明</a></li>
+						<li><a href="">返修/退换货</a></li>
+						<li><a href="">取消订单</a></li>
+					</ul>
+				</li>
+				<li>
+					<ul class="setvices_list_item">
+						<li>特色服务</li>
+						<li><a href="">夺宝岛</a></li>
+						<li><a href="">DIY装机</a></li>
+						<li><a href="">延保服务</a></li>
+						<li><a href="">京东E卡</a></li>
+						<li><a href="">京东通信</a></li>
+						<li><a href="">京东JD+</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+
+		<div class="copyright_con">
+			<div class="links">
+				<ul>
+				<?php foreach($linklist as $v){?>
+					<li><a href="<?php echo $v['address']?>"><?php echo $v['name']?></a></li>
+					<li class="fenge">|</li>
+<?php } ?>
+<!-- 					<li class="links_text"><a href="">关于我们</a></li>
+					<li class="fenge">|</li>
+					<li class="links_text"><a href="">联系我们</a></li>
+					<li class="fenge">|</li>
+					<li class="links_text"><a href="">联系客服</a></li>
+					<li class="fenge">|</li>
+					<li class="links_text"><a href="">合作招商</a></li>
+					<li class="fenge">|</li>
+					<li class="links_text"><a href="">营销中心</a></li>
+					<li class="fenge">|</li>
+					<li class="links_text"><a href="">手机京东</a></li>
+					<li class="fenge">|</li>
+					<li class="links_text"><a href="">友情链接</a></li>
+					<li class="fenge">|</li>
+					<li class="links_text"><a href="">销售联盟</a></li>
+					<li class="fenge">|</li>
+					<li class="links_text"><a href="">京东社区</a></li>
+					<li class="fenge">|</li>
+					<li class="links_text"><a href="">风险监测</a></li>
+					<li class="fenge">|</li>
+					<li class="links_text"><a href="">隐私政策</a></li>
+					<li class="fenge">|</li>
+					<li class="links_text"><a href="">京东公益</a></li>
+					<li class="fenge">|</li>
+					<li class="links_text"><a href="">English Site</a></li>
+					<li class="fenge">|</li>
+					<li class="links_text"><a href="">Media & IR</a></li> -->
+				</ul>
+			</div>
+			<div style="clear:both"></div>
+			<div>
+				<img src="./images/gongan_pic.png">
+				<a href="">京公网安备 11000002000088号</a>   |  京ICP证070359号  |  
+				<a href="">互联网药品信息服务资格证编号(京)-经营性-2014-0008</a>  |  新出发京零 字第大120007号<br>
+			</div>
+			<div>
+				互联网出版许可证编号新出网证(京)字150号  |  
+				<a href="">出版物经营许可证</a>  |  
+				<a href="">网络文化经营许可证京网文[2014]2148-348号</a>  |  违法和不良信息举报电话：4006561155<br>
+			</div>
+			<div>Copyright © 2004-2017  京东JD.com 版权所有  |  消费者维权热线：4006067733    <a href="">经营证照</a><br>
+			</div>
+			<div>
+				京东旗下网站：<a href="">京东支付</a>  |  <a href="">京东云</a><br>
+			</div>
+			<div class="links_pic">
+				<img src="./images/footer_links_pic_1.png" alt="">
+				<img src="./images/footer_links_pic_2.png" alt="">
+				<img src="./images/footer_links_pic_3.png" alt="">
+				<img src="./images/footer_links_pic_4.png" alt="">
+				<img src="./images/footer_links_pic_5.png" alt="">
+				<img src="./images/footer_links_pic_6.png" alt="">
+			</div>
+		</div>	
+	</div>
+</body>
+</html>

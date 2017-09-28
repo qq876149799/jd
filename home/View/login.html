@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>京东-欢迎登录</title>
+	<link rel="stylesheet" href="./Include/css/login.css">
+	<link rel="icon" href="./Include/images/favicon.ico" >
+</head>
+<body>
+	<div id="header">
+		<div class="header_content">
+			<div class="logo">
+				<a href="./index.php" class="logo_pic"><img src="./Include/images/login_logo.png"></a>
+				<img  class="welcome_pic" src="./Include/images/welcome.png">
+			</div>
+			<div class="diaocha">
+				<a href="">登录页面，调查问卷</a>
+			</div>
+		</div>
+		
+	</div>
+	<div id="content">
+		<div class="login_xx">
+			<div class="login_title">
+				<div>扫码登录</div>
+				<div>账户登录</div>
+			</div>
+			<div class="user_info">
+				<table>
+					<form action="./index.php?c=user&a=do_login" method="post">
+					<input type="hidden" name="referer" value="<?php echo $_SERVER['HTTP_REFERER']?>">
+						<tr>
+							<td>
+								<div class="username">
+									<i class="username_pic"></i><input type="text" name="username" placeholder="邮箱/用户名/已验证手机">
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="password">
+									<i class="userpwd_pic"></i><input type="password" name="password" placeholder="密码">
+								</div>
+								
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="yzm">
+									<input type="text" name="yzm" maxlength="4" placeholder="请输入验证码" style="width:160px">
+								</div>
+								<img src="./Include/images/yzm.jpg" class="yzm_pic">
+								<a href="" class="huan_yzm">看不清<br>换一张</a>
+							</td>
+						</tr>
+						<tr>
+							<td class="forget_pwd"><a href="">忘记密码</a></td>
+						</tr>
+						<tr>
+							<td class="login_b"><input type="submit" value="登&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;录" class="do_login_b"></td>
+						</tr>
+					</form>
+				</table>
+			</div>
+			<div class="login_other">
+				<div class="login_other_left">
+					<a href=""><i></i>QQ</a><span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+					<a href=""><i style="background-position: -20px 0;"></i>微信</a>
+				</div>
+				<div class="login_other_right">
+					<a href="./index.php?c=user&a=reg"><i></i>立即注册</a>
+				</div>
+			</div>
+		</div>
+		<!-- <div style="clear:both"></div> -->
+	</div>
+	<div id="footer">
+		<ul>
+		<?php foreach($linklist as $v){?>
+					<li><a href="<?php echo $v['address']?>"><?php echo $v['name']?></a></li>
+					<li class="fenge">|</li>
+<?php } ?>
+		<!-- 	<li class="links"><a href="">关于我们</a></li>
+			<li class="fenge">|</li>
+			<li class="links"><a href="">联系我们</a></li>
+			<li class="fenge">|</li>
+			<li class="links"><a href="">人才招聘</a></li>
+			<li class="fenge">|</li>
+			<li class="links"><a href="">商家入驻</a></li>
+			<li class="fenge">|</li>
+			<li class="links"><a href="">广告服务</a></li>
+			<li class="fenge">|</li>
+			<li class="links"><a href="">手机京东</a></li>
+			<li class="fenge">|</li>
+			<li class="links"><a href="">友情链接</a></li>
+			<li class="fenge">|</li>
+			<li class="links"><a href="">销售联盟</a></li>
+			<li class="fenge">|</li>
+			<li class="links"><a href="">京东社区</a></li>
+			<li class="fenge">|</li>
+			<li class="links"><a href="">京东公益</a></li>
+			<li class="fenge">|</li>
+			<li class="links"><a href="">English Site</a></li> -->
+		</ul><br><br>
+		<span>Copyright © 2004-2017  京东JD.com 版权所有</span>
+	</div>
+</body>
+</html>

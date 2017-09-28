@@ -1,0 +1,163 @@
+footer a{
+	text-decoration: none;
+	color:#666;
+}
+ul li{
+	list-style: none;
+}
+footer{
+	width: 1349px;
+	height: 500px;
+	background-color: #EAEAEA;
+	margin:0 auto;
+}
+.services{
+	height: 72px;
+	width: 100%;
+	/*background-color:red;*/
+	margin:0 auto;
+	padding-top:30px;
+	border-bottom:1px solid #DEDEDE;
+}
+.services ul{
+	margin:0 auto;
+	width: 1080px;
+	color:#444;
+}
+.services ul li{
+	list-style: none;
+	width: 225px;
+	height: 42px;
+	background: url('../images/ico_service.png') no-repeat;
+	float:left;
+	line-height: 42px;
+	padding-left: 45px;
+	font-size: 18px;
+	font-weight: bold;
+}
+.services ul li:nth-child(2){
+	background-position: 0 -43px;
+}
+.services ul li:nth-child(3){
+	background-position: 0 -86px;
+}
+.services ul li:nth-child(4){
+	background-position: 0 -129px;
+}
+.help_list{
+	width: 1349px;
+	height: 200px;
+	border-bottom:1px solid #dedede;
+}
+.help_list a:hover{
+	color:#C81623;
+}
+.help_list>ul{
+	width: 1190px;
+	margin:25px auto;
+}
+.help_list>ul>li{
+	float: left;
+	width: 198px;
+	color:#666;
+}
+.help_list>ul>li>ul>li{
+	margin-top: 3px;
+}
+.help_list>ul>li>ul>li>a{
+	font-size: 12px;
+}
+.help_list>ul>li>ul>li:first-child{
+	font-weight: bold;
+	padding-bottom: 3px;
+}
+.fugai{
+	width: 200px;
+	height: 150px;
+	/*background-color: red;*/
+	float: left;
+	text-align: justify;
+	color:#666;
+	background: url('../images/ico_footer.png') no-repeat;
+}
+.fugai span{
+	display: block;
+	font-weight: bold;
+	width:56%;
+	height: 20px;
+	margin:0 auto;
+}
+.fugai font{
+	font-size: 12px;
+}
+.fugai a{
+	float: right;
+	font-size: 12px;
+}
+.copy{
+	width: 1190px;
+	height: 156px;
+	margin:0 auto;
+}
+.links{
+	width: 1081px;
+	height: 15px;
+	margin:15px auto;
+}
+.links ul li{
+	list-style: none;
+	float: left;
+	font-size: 11px;
+}
+.links ul li a{
+	font-size: 12px;
+}
+.links ul li a:hover{
+	color:#C81623;
+}
+.links ul .fenge{
+	color:#ccc;
+	margin:0 10px;
+}
+.copyright{
+	text-align:center;
+}
+.copyright span,.copyright a{
+	color:#999;
+	font-size:12px;
+}
+.copyright span{
+	display: block;
+	margin-bottom:-15px;
+}
+.copy_pic{
+	width: 1190px;
+	height: 36px;
+	margin:0 auto;
+	/*background:red;*/
+}
+.copy_pic div{
+	width: 103px;
+	height: 32px;
+	background-image: url('../images/ico_footer.png');
+	float: left;
+}
+.copu_pic_1{
+	background-position: 0 -151px;
+	margin-left: 275px;
+}
+.copu_pic_2{
+	background-position: -104px -151px;
+}
+.copu_pic_3{
+	background-position: 0px -184px;
+}
+.copu_pic_4{
+	background-position: -104px -184px;
+}
+.copu_pic_5{
+	background-position: 0px -217px;
+}
+.copu_pic_6{
+	background-position: -104px -217px;
+}

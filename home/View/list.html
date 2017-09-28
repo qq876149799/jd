@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>商品列表 - 京东</title>
+	<link rel="icon" href="./Include/images/favicon.ico" >
+	<link rel="stylesheet" href="./Include/css/header.css">
+	<link rel="stylesheet" href="./Include/css/footer1.css">
+	<link rel="stylesheet" href="./Include/css/list.css">
+</head>
+<body>
+	<div id="body_right_menu">
+		<div class="menu_content">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+	<div id="header">
+		<div class="header_top">
+			<div class="w header_nav">
+				<span class="address">送至：山西</span>
+				<ul>
+					<?php
+					if (empty($_SESSION['user']['username']) || $_SESSION['user']['login'] != 'true') {
+						echo '<li class="header_top_text"><a href="./index.php?c=user&a=login" style="color:#C81623">请登录</a>&nbsp;&nbsp;<a href="./index.php?c=user&a=reg">免费注册</a></li>';
+					}else{
+						echo !isset($_SESSION['user']['uername'])?'<li><a href="./index.php?c=user">'.$_SESSION['user']['username'].'</a><div class="myjd_menu"><a href="./index.php?c=user&a=logout">退出登录</a></div></li>':'username';
+					}
+					
+				?>
+					<li class="fenge">|</li>
+					<li class="header_top_text"><a href="./index.php?c=user&a=order">我的订单</a></li>
+					<li class="fenge">|</li>
+					<li class="header_top_text"><a href="./index.php?c=user">我的京东 ∨</a></li>
+					<li class="fenge">|</li>
+					<li class="header_top_text"><a href="">京东会员</a></li>
+					<li class="fenge">|</li>
+					<li class="header_top_text"><a href="">企业采购</a></li>
+					<li class="fenge">|</li>
+					<li class="header_top_text"><a href="">手机京东 ∨</a></li>
+					<li class="fenge">|</li>
+					<li class="header_top_text"><a href="">关注京东 ∨</a></li>
+					<li class="fenge">|</li>
+					<li class="header_top_text"><a href="">客户服务 ∨</a></li>
+					<li class="fenge">|</li>
+					<li class="header_top_text"><a href="">网站导航 ∨</a></li>
+					<li style="clear: both"></li>
+				</ul>
+			</div>
+		</div>
+		<div class="header_con w">
+			<a href="./index.php"><div class="logo"></div></a>
+			<div class="search">
+				<form action="" method="get">
+					<div class="search_box">
+						<input type="text" name="search_keywords">
+						<input type="submit" value="搜索">
+					</div>
+				</form>
+				<span>
+					<a href="">低至5折</a>&nbsp;
+					<a href="">智能空调</a>&nbsp;
+					<a href="">中央空调</a>&nbsp;
+					<a href="">圆柱空调</a>&nbsp;
+					<a href="">原著空调</a>&nbsp;
+				</span>
+				<div class="myCart">
+					<p></p>
+					<a href="./index.php?c=cart">我的购物车&nbsp;<span>></span></a>
+				</div>
+				<div style="clear:both"></div>
+			</div>
+			<div style="clear: both"></div>
+		</div>
+		<nav class="w">
+			<li><a href="./index.php?c=goods">全部商品<div class="xia_icon"></div></a></li>
+			<li><a href="./index.php">首页</a></li>
+			<li><a href="">服装城</a></li>
+			<li><a href="">美妆馆</a></li>
+			<li><a href="">京东超市</a></li>
+			<li><a href="">生鲜</a></li>
+			<li><a href="">全球购</a></li>
+			<li><a href="">闪购</a></li>
+			<li><a href="">拍卖</a></li>
+			<li><a href="">金融</a></li>
+		</nav>
+	</div>
+	<div id="content">
+		<div class="tuijian w1210 mt15">
+			<div class="hot">热卖<br>推荐</div>
+			<div class="hot_goods">
+				<div class="hot_goods_1 hot_goods_item">
+					<a href=""><div class="hot_goods_pic"><img src="./Include/images/1+5.jpg" alt=""></div></a>
+					<div class="hot_goods_other">
+						<a href="" class="hot_goods_name">一加手机5(A5000) 6GB+64 GB 月岩灰全网通 双卡双待 </a>
+						<span class="hot_goods_price">￥2999.00</span><br>
+						<a href="" class="liji">立即抢购</a>
+					</div>
+				</div>
+				<div class="hot_goods_2 hot_goods_item">
+					<a href=""><div class="hot_goods_pic"><img src="./Include/images/12mian.jpg" alt=""></div></a>
+					<div class="hot_goods_other">
+						<a href="" class="hot_goods_name">三星 Galaxy S8（SM-G950 0）4GB+64GB版 谜夜黑 (加</a>
+						<span class="hot_goods_price">￥5988.00</span><br>
+						<a href="" class="liji">立即抢购</a>
+					</div>
+				</div>
+				<div class="hot_goods_3 hot_goods_item">
+					<a href=""><div class="hot_goods_pic"><img src="./Include/images/8848phone.jpg" alt=""></div></a>
+					<div class="hot_goods_other">
+						<a href="" class="hot_goods_name">【M4新品首发】8848钛金手机 双卡双待全网通4G+ 6G运</a>
+						<span class="hot_goods_price">￥12999.00</span><br>
+						<a href="" class="liji">立即抢购</a>
+					</div>
+				</div>
+			</div>
+			<div class="hot">促销<br>活动</div>
+			<div class="hot_links">
+				<ul>
+					<li><a href="">小米5X新品预约，抽奖...</a></li>
+					<li><a href="">华为畅享7 购机赠耳机！</a></li>
+					<li><a href="">荣耀爆品，优惠200！</a></li>
+					<li><a href="">360 N5s京东独家首发</a></li>
+					<li><a href="">新款美图T8闪耀登场！</a></li>
+				</ul>
+			</div>
+			<div style="clear:both"></div>
+		</div>
+		<div class="caption w1210 mt15">
+			<span class="one_fenlei">手机 </span>
+			<span class="two_fenlei">> 手机通讯</span>
+			<span class="three_fenlei">> 手机</span>
+		</div>
+		<div class="goods_list">
+			<div class="container mt15">
+				<div class="goods_args mt15">
+					<div class="args_title">
+						<span class="fenlei_text">所有商品</span>
+						<b style="font-size: 14px">商品筛选</b>
+						<span class="num_goods">共 9376个商品</span>
+					</div>
+					<div class="goods_pinpais w1210">
+						<span>品牌：</span>
+						<table cellspacing="0" cellpadding="0">
+							<tr>
+								<td><a href=""><img src="./Include/images/huawei_logo.jpg" alt="华为（HUAWEI）" title="华为（HUAWEI）"></a></td>
+								<td><a href=""><img src="./Include/images/xiaomi.jpg" alt="小米（MI）" title="小米（MI）"></a></td>
+								<td><a href=""><img src="./Include/images/apple.jpg" alt="苹果（APPLE）" title="苹果（APPLE）"></a></td>
+								<td><a href=""><img src="./Include/images/meizu.jpg" alt="魅族（MEIZU）" title="魅族（MEIZU）"></a></td>
+								<td><a href=""><img src="./Include/images/samsung.jpg" alt="三星（SAMSUNG）" title="三星（SAMSUNG）"></a></td>
+								<td><a href=""><img src="./Include/images/leshi.jpg" alt="乐视（LeTv）" title="乐视（LeTv）"></a></td>
+								<td><a href=""><img src="./Include/images/oppo.jpg" alt="OPPO" title="OPPO"></a></td>
+								<td><a href=""><img src="./Include/images/vivo.jpg" alt="vivo" title="vivo"></a></td>
+							</tr>
+							<tr>
+								<td><a href=""><img src="./Include/images/nokia.jpg" alt="诺基亚（NOKIA）" title=""></a></td>
+								<td><a href=""><img src="./Include/images/360.jpg" alt="360" title="360"></a></td>
+								<td><a href=""><img src="./Include/images/coolpad.jpg" alt="酷派（Coolpad）" title="酷派（Coolpad）"></a></td>
+								<td><a href=""><img src="./Include/images/chuizi.jpg" alt="锤子（smartisan）" title="锤子（smartisan）"></a></td>
+								<td><a href=""><img src="./Include/images/zte.jpg" alt="中兴（ZTE）" title="中兴（ZTE）"></a></td>
+								<td><a href=""><img src="./Include/images/1jia.jpg" alt="一加" title="一加"></a></td>
+								<td><a href=""><img src="./Include/images/nubia.jpg" alt="努比亚（nubia）" title="努比亚（nubia）"></a></td>
+								<td><a href=""><img src="./Include/images/meizu.jpg" alt="魅族（MEIZU）" title="魅族（MEIZU）"></a></td>
+							</tr>
+						</table>
+					</div>
+					<div class="goods_os goods_others_item w1210">
+						<span>系统：</span>
+						<ul>
+							<li><a href="">安卓（Android）</a></li>
+							<li><a href="">苹果（IOS）</a></li>
+							<li><a href="">微软（WindowsPhone）</a></li>
+							<li><a href="">无</a></li>
+							<li><a href="">其他</a></li>
+						</ul>
+					</div>
+					<div class="goods_price goods_others_item w1210">
+						<span>价格：</span>
+						<ul>
+							<li><a href="">0-499</a></li>
+							<li><a href="">500-999</a></li>
+							<li><a href="">1000-1699</a></li>
+							<li><a href="">1700-2799</a></li>
+							<li><a href="">2800-4499</a></li>
+							<li><a href="">4500-11999</a></li>
+							<li><a href="">12000以上</a></li>
+						</ul>
+					</div>
+					<div class="goods_chicun goods_others_item w1210">
+						<span>屏幕尺寸：</span>
+						<ul>
+							<li><a href="">5.6英寸及以上</a></li>
+							<li><a href="">5.5-5.1英寸</a></li>
+							<li><a href="">5.0-4.6英寸</a></li>
+							<li><a href="">4.5-3.1英寸</a></li>
+							<li><a href="">其他</a></li>
+							<li><a href="">3.0英寸及以下</a></li>
+						</ul>
+					</div>
+					<div class="goods_hot goods_others_item w1210">
+						<span>热点：</span>
+						<ul>
+							<li><a href="">以旧换新</a></li>
+							<li><a href="">功能机</a></li>
+							<li><a href="">骁龙芯片</a></li>
+							<li><a href="">双卡双待</a></li>
+							<li><a href="">快速充电</a></li>
+							<li><a href="">指纹识别</a></li>
+							<li><a href="">Type-C</a></li>
+							<li><a href="">VoLTE</a></li>
+							<li><a href="">金属机身</a></li>
+							<li><a href="">2K屏</a></li>
+						</ul>
+					</div>
+					<div style="clear:both"></div>
+				</div>
+				<div class="goods_content w1210">
+					<div class="left_ad">
+						<div class="left_ad_title">商品精选</div>
+						<div class="jingxuan_goods">
+							<div class="jingxuan_goods_pic">
+								<a href="">
+									<img src="./Include/images/8848_190x190.jpg" alt="">
+								</a>
+								<div class="jingxuan_goods_name"><a href="">【尊享版】8848钛金手机 商务手机 全网通4G 双卡双待 2100万像素 8</a></div>
+								<div class="jingxuan_goods_price">￥9999.00</div>
+								<div class="jingxuan_goods_pingjia">已有868人评价</div>
+							</div>
+						</div>
+						<div class="jingxuan_goods">
+							<div class="jingxuan_goods_pic">
+								<a href="">
+									<img src="./Include/images/8848_190x190.jpg" alt="">
+								</a>
+								<div class="jingxuan_goods_name"><a href="">【尊享版】8848钛金手机 商务手机 全网通4G 双卡双待 2100万像素 8</a></div>
+								<div class="jingxuan_goods_price">￥9999.00</div>
+								<div class="jingxuan_goods_pingjia">已有868人评价</div>
+							</div>
+						</div>
+						<div class="jingxuan_goods">
+							<div class="jingxuan_goods_pic">
+								<a href="">
+									<img src="./Include/images/8848_190x190.jpg" alt="">
+								</a>
+								<div class="jingxuan_goods_name"><a href="">【尊享版】8848钛金手机 商务手机 全网通4G 双卡双待 2100万像素 8</a></div>
+								<div class="jingxuan_goods_price">￥9999.00</div>
+								<div class="jingxuan_goods_pingjia">已有868人评价</div>
+							</div>
+						</div>
+						<div class="jingxuan_goods">
+							<div class="jingxuan_goods_pic">
+								<a href="">
+									<img src="./Include/images/8848_190x190.jpg" alt="">
+								</a>
+								<div class="jingxuan_goods_name"><a href="">【尊享版】8848钛金手机 商务手机 全网通4G 双卡双待 2100万像素 8</a></div>
+								<div class="jingxuan_goods_price">￥9999.00</div>
+								<div class="jingxuan_goods_pingjia">已有868人评价</div>
+							</div>
+						</div>
+					</div>
+					<div class="goods_table">
+						<div class="goods_nav">
+							<ul>
+								<li><a href="">综合排序</a></li>
+								<li><a href="">销量</a></li>
+								<li><a href="">价格</a></li>
+								<li><a href="">评论数</a></li>
+								<li><a href="">上架时间</a></li>
+							</ul>
+						</div>
+						<div class="shou_address">
+							收货地 <i>山西太原市小店区城区</i>
+							<label><input type="checkbox" name="">京东配送</label>
+							<label><input type="checkbox" name="">自营211</label>
+							<label><input type="checkbox" name="">货到付款</label>
+							<label><input type="checkbox" name="" checked>仅显示有货</label>
+							<label><input type="checkbox" name="">可配送全球</label>
+						</div>
+						<ul class="all_goods">
+<?php foreach ($goods as $key => $value) {?>
+
+							<li class="goods_item">
+								<div class="goods_pic"><a href="./index.php?c=goods&a=info&id=<?php echo $value['id']?>"><img src="../public/uploads/goods/<?php echo $value['pic'] ?>" alt="" width="220" height="220"></a></div>
+								<div class="goods_suolve">
+									<div><img src="../public/uploads/goods/<?php echo $value['pic'] ?>" alt="" width="25"></div>
+									<div><img src="../public/uploads/goods/<?php echo $value['pic'] ?>" alt="" width="25"></div>
+									<div><img src="../public/uploads/goods/<?php echo $value['pic'] ?>" alt="" width="25"></div>
+									<div><img src="../public/uploads/goods/<?php echo $value['pic'] ?>" alt="" width="25"></div>
+								</div>
+								<div class="goods_prices">￥<?php echo $value['price'] ?></div>
+								<div class="goods_name"><a href="./index.php?c=goods&a=info&id=<?php echo $value['id']?>"><?php echo $value['name'] ?></a></div>
+								<div class="goods_pingjia">销量 <i><?php echo $value['sales']?></i></div>
+								<div class="goods_dianpu"><span><?php echo $value['company'] ?> &nbsp;</span><i></i></div>
+								<div class="goods_youhui">
+									<div class="goods_youhui_1">自营</div>
+								</div>
+							</li>
+						<?php } ?>
+							<!-- <li class="goods_item">
+								<div class="goods_pic"><a href=""><img src="./images/honor_v9.jpg" alt=""></a></div>
+								<div class="goods_suolve">
+									<div><img src="./images/honor_v9_1_25x25.jpg" alt=""></div>
+									<div><img src="./images/honor_v9_2_25x25.jpg" alt=""></div>
+									<div><img src="./images/honor_v9_3_25x25.jpg" alt=""></div>
+									<div><img src="./images/honor_v9_4_25x25.jpg" alt=""></div>
+								</div>
+								<div class="goods_prices">￥2599.00</div>
+								<div class="goods_name"><a href="">荣耀 V9 全网通 标配版 4GB+64GB 幻夜黑 移动联通电信4G手机 双卡双待</a></div>
+								<div class="goods_pingjia"><i>16万+</i>条评价</div>
+								<div class="goods_dianpu"><span>荣耀官方旗舰店 &nbsp;</span><i></i></div>
+								<div class="goods_youhui">
+									<div class="goods_youhui_1">自营</div>
+								</div>
+							</li>
+							<li class="goods_item">
+								<div class="goods_pic"><a href=""><img src="./images/honor_v9.jpg" alt=""></a></div>
+								<div class="goods_suolve">
+									<div><img src="./images/honor_v9_1_25x25.jpg" alt=""></div>
+									<div><img src="./images/honor_v9_2_25x25.jpg" alt=""></div>
+									<div><img src="./images/honor_v9_3_25x25.jpg" alt=""></div>
+									<div><img src="./images/honor_v9_4_25x25.jpg" alt=""></div>
+								</div>
+								<div class="goods_prices">￥2599.00</div>
+								<div class="goods_name"><a href="">荣耀 V9 全网通 标配版 4GB+64GB 幻夜黑 移动联通电信4G手机 双卡双待</a></div>
+								<div class="goods_pingjia"><i>16万+</i>条评价</div>
+								<div class="goods_dianpu"><span>荣耀官方旗舰店 &nbsp;</span><i></i></div>
+								<div class="goods_youhui">
+									<div class="goods_youhui_1">自营</div>
+								</div>
+							</li>
+							<li class="goods_item">
+								<div class="goods_pic"><a href=""><img src="./images/honor_v9.jpg" alt=""></a></div>
+								<div class="goods_suolve">
+									<div><img src="./images/honor_v9_1_25x25.jpg" alt=""></div>
+									<div><img src="./images/honor_v9_2_25x25.jpg" alt=""></div>
+									<div><img src="./images/honor_v9_3_25x25.jpg" alt=""></div>
+									<div><img src="./images/honor_v9_4_25x25.jpg" alt=""></div>
+								</div>
+								<div class="goods_prices">￥2599.00</div>
+								<div class="goods_name"><a href="">荣耀 V9 全网通 标配版 4GB+64GB 幻夜黑 移动联通电信4G手机 双卡双待</a></div>
+								<div class="goods_pingjia"><i>16万+</i>条评价</div>
+								<div class="goods_dianpu"><span>荣耀官方旗舰店 &nbsp;</span><i></i></div>
+								<div class="goods_youhui">
+									<div class="goods_youhui_1">自营</div>
+								</div>
+							</li>
+							<li class="goods_item">
+								<div class="goods_pic"><a href=""><img src="./images/honor_v9.jpg" alt=""></a></div>
+								<div class="goods_suolve">
+									<div><img src="./images/honor_v9_1_25x25.jpg" alt=""></div>
+									<div><img src="./images/honor_v9_2_25x25.jpg" alt=""></div>
+									<div><img src="./images/honor_v9_3_25x25.jpg" alt=""></div>
+									<div><img src="./images/honor_v9_4_25x25.jpg" alt=""></div>
+								</div>
+								<div class="goods_prices">￥2599.00</div>
+								<div class="goods_name"><a href="">荣耀 V9 全网通 标配版 4GB+64GB 幻夜黑 移动联通电信4G手机 双卡双待</a></div>
+								<div class="goods_pingjia"><i>16万+</i>条评价</div>
+								<div class="goods_dianpu"><span>荣耀官方旗舰店 &nbsp;</span><i></i></div>
+								<div class="goods_youhui">
+									<div class="goods_youhui_1">自营</div>
+								</div>
+							</li>
+							<li class="goods_item">
+								<div class="goods_pic"><a href=""><img src="./images/honor_v9.jpg" alt=""></a></div>
+								<div class="goods_suolve">
+									<div><img src="./images/honor_v9_1_25x25.jpg" alt=""></div>
+									<div><img src="./images/honor_v9_2_25x25.jpg" alt=""></div>
+									<div><img src="./images/honor_v9_3_25x25.jpg" alt=""></div>
+									<div><img src="./images/honor_v9_4_25x25.jpg" alt=""></div>
+								</div>
+								<div class="goods_prices">￥2599.00</div>
+								<div class="goods_name"><a href="">荣耀 V9 全网通 标配版 4GB+64GB 幻夜黑 移动联通电信4G手机 双卡双待</a></div>
+								<div class="goods_pingjia"><i>16万+</i>条评价</div>
+								<div class="goods_dianpu"><span>荣耀官方旗舰店 &nbsp;</span><i></i></div>
+								<div class="goods_youhui">
+									<div class="goods_youhui_1">自营</div>
+								</div>
+							</li>
+							<li class="goods_item">
+								<div class="goods_pic"><a href=""><img src="./images/honor_v9.jpg" alt=""></a></div>
+								<div class="goods_suolve">
+									<div><img src="./images/honor_v9_1_25x25.jpg" alt=""></div>
+									<div><img src="./images/honor_v9_2_25x25.jpg" alt=""></div>
+									<div><img src="./images/honor_v9_3_25x25.jpg" alt=""></div>
+									<div><img src="./images/honor_v9_4_25x25.jpg" alt=""></div>
+								</div>
+								<div class="goods_prices">￥2599.00</div>
+								<div class="goods_name"><a href="">荣耀 V9 全网通 标配版 4GB+64GB 幻夜黑 移动联通电信4G手机 双卡双待</a></div>
+								<div class="goods_pingjia"><i>16万+</i>条评价</div>
+								<div class="goods_dianpu"><span>荣耀官方旗舰店 &nbsp;</span><i></i></div>
+								<div class="goods_youhui">
+									<div class="goods_youhui_1">自营</div>
+								</div>
+							</li>
+							<li class="goods_item">
+								<div class="goods_pic"><a href=""><img src="./images/honor_v9.jpg" alt=""></a></div>
+								<div class="goods_suolve">
+									<div><img src="./images/honor_v9_1_25x25.jpg" alt=""></div>
+									<div><img src="./images/honor_v9_2_25x25.jpg" alt=""></div>
+									<div><img src="./images/honor_v9_3_25x25.jpg" alt=""></div>
+									<div><img src="./images/honor_v9_4_25x25.jpg" alt=""></div>
+								</div>
+								<div class="goods_prices">￥2599.00</div>
+								<div class="goods_name"><a href="">荣耀 V9 全网通 标配版 4GB+64GB 幻夜黑 移动联通电信4G手机 双卡双待</a></div>
+								<div class="goods_pingjia"><i>16万+</i>条评价</div>
+								<div class="goods_dianpu"><span>荣耀官方旗舰店 &nbsp;</span><i></i></div>
+								<div class="goods_youhui">
+									<div class="goods_youhui_1">自营</div>
+								</div>
+							</li><li class="goods_item">
+								<div class="goods_pic"><a href=""><img src="./images/honor_v9.jpg" alt=""></a></div>
+								<div class="goods_suolve">
+									<div><img src="./images/honor_v9_1_25x25.jpg" alt=""></div>
+									<div><img src="./images/honor_v9_2_25x25.jpg" alt=""></div>
+									<div><img src="./images/honor_v9_3_25x25.jpg" alt=""></div>
+									<div><img src="./images/honor_v9_4_25x25.jpg" alt=""></div>
+								</div>
+								<div class="goods_prices">￥2599.00</div>
+								<div class="goods_name"><a href="">荣耀 V9 全网通 标配版 4GB+64GB 幻夜黑 移动联通电信4G手机 双卡双待</a></div>
+								<div class="goods_pingjia"><i>16万+</i>条评价</div>
+								<div class="goods_dianpu"><span>荣耀官方旗舰店 &nbsp;</span><i></i></div>
+								<div class="goods_youhui">
+									<div class="goods_youhui_1">自营</div>
+								</div>
+							</li>
+							<li class="goods_item">
+								<div class="goods_pic"><a href=""><img src="./images/honor_v9.jpg" alt=""></a></div>
+								<div class="goods_suolve">
+									<div><img src="./images/honor_v9_1_25x25.jpg" alt=""></div>
+									<div><img src="./images/honor_v9_2_25x25.jpg" alt=""></div>
+									<div><img src="./images/honor_v9_3_25x25.jpg" alt=""></div>
+									<div><img src="./images/honor_v9_4_25x25.jpg" alt=""></div>
+								</div>
+								<div class="goods_prices">￥2599.00</div>
+								<div class="goods_name"><a href="">荣耀 V9 全网通 标配版 4GB+64GB 幻夜黑 移动联通电信4G手机 双卡双待</a></div>
+								<div class="goods_pingjia"><i>16万+</i>条评价</div>
+								<div class="goods_dianpu"><span>荣耀官方旗舰店 &nbsp;</span><i></i></div>
+								<div class="goods_youhui">
+									<div class="goods_youhui_1">自营</div>
+								</div>
+							</li>
+							<li class="goods_item">
+								<div class="goods_pic"><a href=""><img src="./images/honor_v9.jpg" alt=""></a></div>
+								<div class="goods_suolve">
+									<div><img src="./images/honor_v9_1_25x25.jpg" alt=""></div>
+									<div><img src="./images/honor_v9_2_25x25.jpg" alt=""></div>
+									<div><img src="./images/honor_v9_3_25x25.jpg" alt=""></div>
+									<div><img src="./images/honor_v9_4_25x25.jpg" alt=""></div>
+								</div>
+								<div class="goods_prices">￥2599.00</div>
+								<div class="goods_name"><a href="">荣耀 V9 全网通 标配版 4GB+64GB 幻夜黑 移动联通电信4G手机 双卡双待</a></div>
+								<div class="goods_pingjia"><i>16万+</i>条评价</div>
+								<div class="goods_dianpu"><span>荣耀官方旗舰店 &nbsp;</span><i></i></div>
+								<div class="goods_youhui">
+									<div class="goods_youhui_1">自营</div>
+								</div>
+							</li>
+							<li class="goods_item">
+								<div class="goods_pic"><a href=""><img src="./images/honor_v9.jpg" alt=""></a></div>
+								<div class="goods_suolve">
+									<div><img src="./images/honor_v9_1_25x25.jpg" alt=""></div>
+									<div><img src="./images/honor_v9_2_25x25.jpg" alt=""></div>
+									<div><img src="./images/honor_v9_3_25x25.jpg" alt=""></div>
+									<div><img src="./images/honor_v9_4_25x25.jpg" alt=""></div>
+								</div>
+								<div class="goods_prices">￥2599.00</div>
+								<div class="goods_name"><a href="">荣耀 V9 全网通 标配版 4GB+64GB 幻夜黑 移动联通电信4G手机 双卡双待</a></div>
+								<div class="goods_pingjia"><i>16万+</i>条评价</div>
+								<div class="goods_dianpu"><span>荣耀官方旗舰店 &nbsp;</span><i></i></div>
+								<div class="goods_youhui">
+									<div class="goods_youhui_1">自营</div>
+								</div>
+							</li>
+							<li class="goods_item">
+								<div class="goods_pic"><a href=""><img src="./images/honor_v9.jpg" alt=""></a></div>
+								<div class="goods_suolve">
+									<div><img src="./images/honor_v9_1_25x25.jpg" alt=""></div>
+									<div><img src="./images/honor_v9_2_25x25.jpg" alt=""></div>
+									<div><img src="./images/honor_v9_3_25x25.jpg" alt=""></div>
+									<div><img src="./images/honor_v9_4_25x25.jpg" alt=""></div>
+								</div>
+								<div class="goods_prices">￥2599.00</div>
+								<div class="goods_name"><a href="">荣耀 V9 全网通 标配版 4GB+64GB 幻夜黑 移动联通电信4G手机 双卡双待</a></div>
+								<div class="goods_pingjia"><i>16万+</i>条评价</div>
+								<div class="goods_dianpu"><span>荣耀官方旗舰店 &nbsp;</span><i></i></div>
+								<div class="goods_youhui">
+									<div class="goods_youhui_1">自营</div>
+								</div>
+							</li>
+							<li class="goods_item">
+								<div class="goods_pic"><a href=""><img src="./images/honor_v9.jpg" alt=""></a></div>
+								<div class="goods_suolve">
+									<div><img src="./images/honor_v9_1_25x25.jpg" alt=""></div>
+									<div><img src="./images/honor_v9_2_25x25.jpg" alt=""></div>
+									<div><img src="./images/honor_v9_3_25x25.jpg" alt=""></div>
+									<div><img src="./images/honor_v9_4_25x25.jpg" alt=""></div>
+								</div>
+								<div class="goods_prices">￥2599.00</div>
+								<div class="goods_name"><a href="">荣耀 V9 全网通 标配版 4GB+64GB 幻夜黑 移动联通电信4G手机 双卡双待</a></div>
+								<div class="goods_pingjia"><i>16万+</i>条评价</div>
+								<div class="goods_dianpu"><span>荣耀官方旗舰店 &nbsp;</span><i></i></div>
+								<div class="goods_youhui">
+									<div class="goods_youhui_1">自营</div>
+								</div>
+							</li>
+							<li class="goods_item">
+								<div class="goods_pic"><a href=""><img src="./images/honor_v9.jpg" alt=""></a></div>
+								<div class="goods_suolve">
+									<div><img src="./images/honor_v9_1_25x25.jpg" alt=""></div>
+									<div><img src="./images/honor_v9_2_25x25.jpg" alt=""></div>
+									<div><img src="./images/honor_v9_3_25x25.jpg" alt=""></div>
+									<div><img src="./images/honor_v9_4_25x25.jpg" alt=""></div>
+								</div>
+								<div class="goods_prices">￥2599.00</div>
+								<div class="goods_name"><a href="">荣耀 V9 全网通 标配版 4GB+64GB 幻夜黑 移动联通电信4G手机 双卡双待</a></div>
+								<div class="goods_pingjia"><i>16万+</i>条评价</div>
+								<div class="goods_dianpu"><span>荣耀官方旗舰店 &nbsp;</span><i></i></div>
+								<div class="goods_youhui">
+									<div class="goods_youhui_1">自营</div>
+								</div>
+							</li>
+							<li class="goods_item">
+								<div class="goods_pic"><a href=""><img src="./images/honor_v9.jpg" alt=""></a></div>
+								<div class="goods_suolve">
+									<div><img src="./images/honor_v9_1_25x25.jpg" alt=""></div>
+									<div><img src="./images/honor_v9_2_25x25.jpg" alt=""></div>
+									<div><img src="./images/honor_v9_3_25x25.jpg" alt=""></div>
+									<div><img src="./images/honor_v9_4_25x25.jpg" alt=""></div>
+								</div>
+								<div class="goods_prices">￥2599.00</div>
+								<div class="goods_name"><a href="">荣耀 V9 全网通 标配版 4GB+64GB 幻夜黑 移动联通电信4G手机 双卡双待</a></div>
+								<div class="goods_pingjia"><i>16万+</i>条评价</div>
+								<div class="goods_dianpu"><span>荣耀官方旗舰店 &nbsp;</span><i></i></div>
+								<div class="goods_youhui">
+									<div class="goods_youhui_1">自营</div>
+								</div>
+							</li> -->
+
+							<li style="clear:both"></li>
+						</ul>
+						<div class="page">
+							<div class="page_ul">
+<?php $id = isset($_GET['id'])?'&id='.$_GET['id']:'' ?>
+								<div style="margin-right: 20px;"><a href="?c=goods&page=1<?php echo $id?>" class="prev_page">< 首页</a></div>
+								<a href="?c=goods&page=<?php echo $prePage.$id?>" class="prev_page">< 上一页</a>
+								<div class="d_page">第<?php echo $dpage?>页</div>
+								<a href="?c=goods&page=<?php echo $nextPage.$id?>" class="next_page">下一页 ></a>
+								<div class="total_page">共<?php echo $pageAll ?>页</div>
+								<!-- <div class="jump_page">
+									<form action="" method="get">
+										到第 <input type="text" name="page"> 页 
+										 <input type="submit" value="确定">
+									</form>
+								</div> -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div style="clear: both"></div>
+	<div id="footer">
+		<div class="service_items">
+			<ul>
+				<li class="service_item_1"></li>
+				<li class="service_item_2"></li>
+				<li class="service_item_3"></li>
+				<li class="service_item_4"></li>
+			</ul>
+		</div>
+		<div class="services_list">
+			<ul>
+				<li>
+					<ul class="setvices_list_item">
+						<li>购物指南</li>
+						<li><a href="">购物流程</a></li>
+						<li><a href="">会员介绍</a></li>
+						<li><a href="">生活旅行/团购</a></li>
+						<li><a href="">常见问题</a></li>
+						<li><a href="">大家电</a></li>
+						<li><a href="">联系客服</a></li>
+					</ul>
+				</li>
+				<li>
+					<ul class="setvices_list_item">
+						<li>配送方式</li>
+						<li><a href="">上门自提</a></li>
+						<li><a href="">211限时达</a></li>
+						<li><a href="">配送服务查询</a></li>
+						<li><a href="">配送费收取标准</a></li>
+						<li><a href="">海外配送</a></li>
+					</ul>
+				</li>
+				<li>
+					<ul class="setvices_list_item">
+						<li>支付方式</li>
+						<li><a href="">货到付款</a></li>
+						<li><a href="">在线支付</a></li>
+						<li><a href="">分期付款</a></li>
+						<li><a href="">邮局汇款</a></li>
+						<li><a href="">公司转账</a></li>
+					</ul>
+				</li>
+				<li>
+					<ul class="setvices_list_item">
+						<li>售后服务</li>
+						<li><a href="">售后政策</a></li>
+						<li><a href="">价格保护</a></li>
+						<li><a href="">退款说明</a></li>
+						<li><a href="">返修/退换货</a></li>
+						<li><a href="">取消订单</a></li>
+					</ul>
+				</li>
+				<li>
+					<ul class="setvices_list_item">
+						<li>特色服务</li>
+						<li><a href="">夺宝岛</a></li>
+						<li><a href="">DIY装机</a></li>
+						<li><a href="">延保服务</a></li>
+						<li><a href="">京东E卡</a></li>
+						<li><a href="">京东通信</a></li>
+						<li><a href="">京东JD+</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div class="copyright_con">
+			<div class="links">
+			<ul>
+				<li class="links_text"><a href="">关于我们</a></li>
+				<li class="fenge">|</li>
+				<li class="links_text"><a href="">联系我们</a></li>
+				<li class="fenge">|</li>
+				<li class="links_text"><a href="">联系客服</a></li>
+				<li class="fenge">|</li>
+				<li class="links_text"><a href="">合作招商</a></li>
+				<li class="fenge">|</li>
+				<li class="links_text"><a href="">营销中心</a></li>
+				<li class="fenge">|</li>
+				<li class="links_text"><a href="">手机京东</a></li>
+				<li class="fenge">|</li>
+				<li class="links_text"><a href="">友情链接</a></li>
+				<li class="fenge">|</li>
+				<li class="links_text"><a href="">销售联盟</a></li>
+				<li class="fenge">|</li>
+				<li class="links_text"><a href="">京东社区</a></li>
+				<li class="fenge">|</li>
+				<li class="links_text"><a href="">风险监测</a></li>
+				<li class="fenge">|</li>
+				<li class="links_text"><a href="">隐私政策</a></li>
+				<li class="fenge">|</li>
+				<li class="links_text"><a href="">京东公益</a></li>
+				<li class="fenge">|</li>
+				<li class="links_text"><a href="">English Site</a></li>
+				<li class="fenge">|</li>
+				<li class="links_text"><a href="">Media & IR</a></li>
+			</ul>
+			</div>
+			<div>
+				<img src="./images/gongan_pic.png">
+				<a href="">京公网安备 11000002000088号</a>   |  京ICP证070359号  |  
+				<a href="">互联网药品信息服务资格证编号(京)-经营性-2014-0008</a>  |  新出发京零 字第大120007号<br>
+			</div>
+			<div>
+				互联网出版许可证编号新出网证(京)字150号  |  
+				<a href="">出版物经营许可证</a>  |  
+				<a href="">网络文化经营许可证京网文[2014]2148-348号</a>  |  违法和不良信息举报电话：4006561155<br>
+			</div>
+			<div>Copyright © 2004-2017  京东JD.com 版权所有  |  消费者维权热线：4006067733    <a href="">经营证照</a><br>
+			</div>
+			<div>
+				京东旗下网站：<a href="">京东支付</a>  |  <a href="">京东云</a><br>
+			</div>
+			<div class="links_pic">
+				<img src="./images/footer_links_pic_1.png" alt="">
+				<img src="./images/footer_links_pic_2.png" alt="">
+				<img src="./images/footer_links_pic_3.png" alt="">
+				<img src="./images/footer_links_pic_4.png" alt="">
+				<img src="./images/footer_links_pic_5.png" alt="">
+				<img src="./images/footer_links_pic_6.png" alt="">
+			</div>
+		</div>	
+	</div>
+</body>
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>订单处理</title>
+	<meta charset="utf-8"/>
+	<link rel="icon" href="./Include/images/favicon.ico" >
+	<link rel="stylesheet" href="./Include/css/tasp.css" />
+	<link href="./Include/css/orderconfirm.css" rel="stylesheet" />
+	<style>
+		#content{width:990px;margin:auto;}
+	</style>
+</head>
+<body data-spm="1">
+<div id="header">
+		<div id="header_top" class="w">
+			<div class="index"><img src="./Include/images/home.png"><a href="./index.php">京东首页</a></div>
+			<div class="position"><img src="./Include/images/position.png"><span> 山西</span></div>
+			<div class="header_top_right">
+				<ul>
+					<?php if ( empty($_SESSION['user']['username']) || $_SESSION['user']['login'] != 'true') {
+	echo '<li><a href="./index.php?c=user&a=login">你好，请登录</a>&nbsp;<a href="./index.php?c=user&a=reg" style="color:#F10215">免费注册</a></li>';
+}else{
+	echo !isset($_SESSION['user']['uername'])?'<li><a href="./index.php?c=user">'.$_SESSION['user']['username'].'</a><div class="myjd_menu"><a href="./index.php?c=user&a=logout">退出登录</a></div></li>':'username';
+} ?>
+					<li style="color:#ccc">|</li>
+					<li><a href="./index.php?c=user&a=order">我的订单</a></li>
+					<li style="color:#ccc">|</li>
+					<li><a href="./index.php?c=user">我的京东 ∨</a></li>
+					<li style="color:#ccc">|</li>
+					<li><a href="#">京东会员</a></li>
+					<li style="color:#ccc">|</li>
+					<li><a href="#">企业采购</a></li>
+					<li style="color:#ccc">|</li>
+					<li>客户服务 ∨</li>
+					<li style="color:#ccc">|</li>
+					<li>网站导航 ∨</li>
+					<li style="color:#ccc">|</li>
+					<li><a href="">手机京东</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+
+	<div id="top" class="w">
+		<a href="./index.php"><img src="./Include/images/login_logo.png"></a>
+		<a href="#"><img src="./Include/images/purchase-icon.png"></a>
+		<form action="" method="">
+			<div class="search">
+				<input type="text" name="search" placeholder="自营">
+				<input type="submit" value="搜索">
+			</div>
+		</form>
+	</div>
+	<div id="content" class="grid-c">
+		<form name="addrForm" action="./index.php?c=order&a=do_add" method="post">
+		<!-- 隐藏传状态 -->
+		<input type="hidden" name="status" value="0">
+		<!-- 隐藏传用户id -->
+		<input type="hidden" name="uid" value="<?php echo $_SESSION['user']['id']?>">
+        <!-- 隐藏传所购买的商品id -->
+<?php $goodsid = implode(',',$_POST['id']); ?>
+        <input type="hidden" name="goodsid" value="<?php echo $goodsid ?>" >
+			<div id="address" class="address" style="margin-top: 20px;" data-spm="2">
+				<h3>收货人信息</h3>
+				<ul id="address-list" class="address-list">
+					<li class="J_Addr J_MakePoint clearfix  J_DefaultAddr">
+						<div class="address-info">
+							　联系人：<input type="text" name="linkman" required oninvalid="setCustomValidity('请填写联系人')" oninput="setCustomValidity('')">　　
+							联系电话：<input type="number" name="phone" required oninvalid="setCustomValidity('请填写联系电话')" oninput="setCustomValidity('')">　　
+							邮政编码：<input type="number" name="postcode"><br><br>
+						 收货地址：<textarea name="address" id="" cols="100" rows="3" placeholder="请输入收货地址" required oninvalid="setCustomValidity('请填写收货地址')" oninput="setCustomValidity('')"></textarea>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div id="address" class="address" style="margin-top: 20px;" data-spm="2">
+				<h3>支付方式</h3>
+				<ul id="address-list" class="address-list">
+					<li class="J_Addr J_MakePoint clearfix  J_DefaultAddr">
+						<div class="address-info">
+							　<label><input type="radio" name="pay" value="1">货到付款</label>
+							　<label><input type="radio" name="pay" value="2" checked>在线支付</label>
+							　<label><input type="radio" name="pay" value="3">公司转账</label>
+							　<label><input type="radio" name="pay" value="4">邮局汇款</label>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div>
+			<h3 class="dib">确认订单信息</h3>
+			<table cellspacing="0" cellpadding="0" class="order-table" id="J_OrderTable" summary="统一下单订单信息区域">
+				<thead>
+					<tr>
+						<th class="s-title">店铺宝贝<hr/></th>
+						<th class="s-price">单价(元)<hr/></th>
+						<th class="s-amount">数量<hr/></th>
+						<th class="s-agio">优惠方式(元)<hr/></th>
+						<th class="s-total">小计(元)<hr/></th>
+					</tr>
+				</thead>
+				<tbody data-spm="3" class="J_Shop">
+<?php if(isset($_POST['id']) && $_POST['id']>0){ 
+		$total = 0;
+		foreach ($_POST['id'] as $value) {
+			$xiaoji = $_SESSION['cart'][$value]['price'] * $_SESSION['cart'][$value]['gnum'];
+			$total += $xiaoji;
+?>
+				<tr class="shop blue-line">
+									<td colspan="3">
+									店铺：<a class="J_ShopName J_MakePoint" href="" title="<?php echo $_SESSION['cart'][$value]['company'] ?>"><?php echo $_SESSION['cart'][$value]['company'] ?></a>
+									<span class="seller"></span>
+									<td colspan="2" class="promo">
+										<div>
+											<ul class="scrolling-promo-hint J_ScrollingPromoHint"></ul>
+										</div>
+									</td>
+								</tr>
+								<tr class="item">
+									<td class="s-title">
+										<a href="#" target="_blank" class="J_MakePoint" data-point-url="">
+										<img src="../public/uploads/goods/<?php echo $_SESSION['cart'][$value]['pic'] ?>" class="itempic"><span class="title J_MakePoint"><?php echo $_SESSION['cart'][$value]['name']?></span></a>
+										<div>
+										<span style="color:gray;">卖家承诺24小时内发货</span>
+										</div>
+									</td>
+									<td class="s-price">
+										<span class="price">
+										<em class="style-normal-small-black J_ItemPrice"  >￥<?php echo $_SESSION['cart'][$value]['price']?></em>
+										</span>
+									</td>
+									<td class="s-price">
+										<span class="price">
+										<em class="style-normal-small-black J_ItemPrice"  ><?php echo $_SESSION['cart'][$value]['gnum']?></em>
+										</span>
+									</td>
+									<td class="s-agio">
+										<div class="J_Promotion promotion" data-point-url="">无优惠</div>
+									</td>
+									<td class="s-total">
+										<span class="price">
+										<em class="style-normal-bold-red J_ItemTotal "  >￥<?php echo $xiaoji?></em>
+										</span>
+									</td>
+								</tr>
+<?php  }}?>
+				<tr class="item-service">
+				<td colspan="5" class="servicearea" style="display: none"></td>
+				</tr>
+
+				<tr class="blue-line" style="height: 2px;"><td colspan="5"></td></tr>
+				<tr class="other other-line">
+				<td colspan="5">
+				<ul class="dib-wrap">
+				<li class="dib extra-info">
+
+				<div class="shoparea">
+				<ul class="dib-wrap" style="float: right">
+				<li class="dib title">店铺优惠：</li>
+				<li class="dib sel"><div class="J_ShopPromo J_Promotion promotion clearfix"></div></li>
+				<li class="dib fee">  <span class='price '>
+				-<em class="style-normal-bold-black J_ShopPromo_Result"  >￥0.00</em>
+				</span>
+				</li>
+				</ul>
+				</div>
+				<div class="shoppointarea"></div>
+				<div class="farearea">
+				<ul class="dib-wrap J_farearea">
+				<li class="dib title">运送方式：</li>
+				<li class="dib sel">
+				<select name="kuaidi" class="J_Fare">
+					<option value="2" selected="selected">快递 包邮 </option>
+				</select>
+				<em tabindex="0" class="J_FareFree" style="display: none">免邮费</em>
+				</li>
+				<li class="dib fee">  <span class='price '>
+				<em class="style-normal-bold-red J_FareSum"  >￥0.00</em>
+				</span>
+				</li>
+				</ul>
+				</div>
+				<div class="extra-area">
+				<ul class="dib-wrap">
+				<li class="dib title">发货时间：</li>
+				<li class="dib content">卖家承诺订单在买家付款后，72小时内<a href="#">发货</a></li>
+				</ul>
+				</div>
+
+				<div class="servicearea" style="display: none"></div>
+				</li>
+				</ul>
+				</td>
+				</tr>
+				<tr class="shop-total blue-line">
+					<td colspan="5">
+						店铺合计(<span class="J_Exclude" style="display: none">不</span>含运费<span class="J_ServiceText" style="display: none">，服务费</span>)：
+						<span class='price g_price '>
+						 <span>&yen;</span><em class="style-middle-bold-red J_ShopTotal"  ><?php echo $total?></em>
+						</span>
+					</td>
+				</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td colspan="5">
+							<div class="order-go" data-spm="4">
+								<div class="J_AddressConfirm address-confirm">
+									<div class="kd-popup pop-back" style="margin-bottom: 40px;">
+										<a href="./index.php?c=cart"
+										class="back J_MakePoint" >返回购物车</a>
+										<!-- 隐藏传总价 -->
+       			 						<input type="hidden" name="total" value="<?php echo $total ?>">
+										<input type="submit" value="　提交订单　" class="post-order">
+									</div>
+								</div>
+
+								<div class="J_confirmError confirm-error">
+									<div class="msg J_shopPointError" style="display: none;"><p class="error">积分点数必须为大于0的整数</p></div>
+								</div>
+
+
+								<div class="msg" style="clear: both;">
+									<p class="tips naked" style="float:right;padding-right: 0">若价格变动，请在提交订单后联系卖家改价，并查看已买到的宝贝</p>
+								</div>
+							</div>
+						</td>
+					</tr>
+				</tfoot>
+			</table>
+			</div>
+		</form>
+	</div>
+
+		<div id="footer"></div>
+	</div>
+</body>
+</html>
